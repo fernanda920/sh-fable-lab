@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Sellers Hub | The Machine That Finds Your Next Top Seller</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#0A0A0E; --deep:#121218; --navy:#24252D; --panel:rgba(32,33,42,.5);
+  --teal:#FFB454; --teal-soft:rgba(255,180,84,.55); --teal-faint:rgba(255,180,84,.16);
+  --amber:#7FE0C3;
+  --text:#EEF1F9; --dim:rgba(238,241,249,.6); --faint:rgba(238,241,249,.34);
+  --line:rgba(238,241,249,.09);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter Tight',sans-serif;background:var(--void);color:var(--text);
+  font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body::before{ /* nebula grading, pure CSS, sits under the canvas */
+  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(1100px 700px at 78% 12%, rgba(255,180,84,.06), transparent 60%),
+    radial-gradient(900px 900px at 12% 88%, rgba(40,38,32,.55), transparent 65%),
+    radial-gradient(1400px 1000px at 50% 45%, rgba(16,16,20,.9), var(--void) 75%);
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.mono{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em}
+
+/* canvas */
+#sky{position:fixed;inset:0;z-index:-1;display:block}
+@media (prefers-reduced-motion:reduce){#sky{display:none}}
+
+/* ---------- NAV ---------- */
+.nav{position:sticky;top:0;z-index:60;background:rgba(10,10,14,.72);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:11px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:#fff}
+.brand img{height:36px}
+.nav-links{display:flex;gap:32px;font-size:14.5px;font-weight:500;color:var(--dim)}
+.nav-links a:hover{color:var(--teal)}
+.btn{
+  position:relative;display:inline-flex;align-items:center;gap:10px;
+  background:var(--teal);color:#1F1304;font-weight:600;font-family:'Space Grotesk',sans-serif;
+  font-size:15.5px;padding:14px 28px;border-radius:6px;border:0;cursor:pointer;
+  transition:box-shadow .3s var(--ease),transform .3s var(--ease);white-space:nowrap;
+}
+.btn:hover{box-shadow:0 0 0 1px var(--teal),0 8px 40px rgba(255,180,84,.35)}
+.btn:active{transform:scale(.98)}
+.btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid rgba(238,241,249,.22);font-weight:500}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal);box-shadow:none}
+.mag{will-change:transform}
+
+/* ---------- HERO ---------- */
+.hero{min-height:92vh;display:flex;align-items:center;position:relative}
+.hero-in{max-width:760px;padding:90px 0 60px}
+.hero .kicker{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.14em;color:var(--teal);margin-bottom:26px}
+.hero h1{font-size:clamp(40px,5.4vw,72px);font-weight:700;line-height:1.02}
+.hero h1 .ghost{color:transparent;-webkit-text-stroke:1px rgba(238,241,249,.5)}
+.hero p{margin:26px 0 38px;font-size:19px;color:var(--dim);max-width:38ch}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.hero-meta{position:absolute;bottom:34px;left:0;right:0}
+.hero-meta .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.hero-meta span{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:var(--faint)}
+
+/* ---------- LOGO INSTRUMENTS ---------- */
+.logos{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(18,18,24,.4);backdrop-filter:blur(6px)}
+.logos .wrap{display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap;padding-top:26px;padding-bottom:26px}
+.logos span{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--faint);white-space:nowrap}
+.logos img{height:24px;opacity:.4;filter:brightness(0) invert(1);transition:opacity .3s}
+.logos img:hover{opacity:1}
+
+/* ---------- GAUGES ---------- */
+.gauges{padding:110px 0 90px}
+.g-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.gauge{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:32px 28px 28px;backdrop-filter:blur(8px)}
+.gauge svg{width:96px;height:96px;display:block;margin-bottom:20px}
+.gauge svg .track{stroke:rgba(238,241,249,.1)}
+.gauge svg .arc{stroke:var(--teal);stroke-linecap:round;transition:stroke-dashoffset 1.6s var(--ease)}
+.gauge b{display:block;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:34px;line-height:1;color:#fff;margin-bottom:10px}
+.gauge small{font-size:14px;color:var(--dim);line-height:1.5;display:block}
+.g-head{margin-bottom:52px;max-width:620px}
+.g-head h2{font-size:clamp(28px,3.2vw,40px);line-height:1.1}
+.g-head p{margin-top:14px;color:var(--dim)}
+
+/* ---------- FUNNEL (signature) ---------- */
+.funnel{position:relative;height:320vh}
+.funnel-stage{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden}
+.funnel-hud{width:100%}
+.funnel-hud .wrap{display:flex;justify-content:space-between;align-items:center;gap:40px}
+.f-left{max-width:400px}
+.f-left h2{font-size:clamp(30px,3.6vw,46px);line-height:1.06;margin-bottom:18px}
+.f-left p{color:var(--dim);font-size:16.5px}
+.f-stage-label{font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.14em;color:var(--teal);margin-bottom:20px;min-height:16px}
+.f-right{text-align:right}
+.f-count{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:clamp(72px,10vw,150px);line-height:1;color:#fff;text-shadow:0 0 60px rgba(255,180,84,.35)}
+.f-count-label{font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:.16em;color:var(--dim);margin-top:12px}
+.f-days{display:inline-block;margin-top:22px;font-family:'IBM Plex Mono',monospace;font-size:15px;letter-spacing:.1em;color:var(--amber);border:1px solid rgba(127,224,195,.45);padding:9px 16px;border-radius:4px;opacity:0;transform:translateY(8px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.f-days.on{opacity:1;transform:none}
+.f-src{margin-top:16px;font-size:12.5px;color:var(--faint)}
+@media (prefers-reduced-motion:reduce){
+  .funnel{height:auto}
+  .funnel-stage{position:static;height:auto;padding:100px 0}
+}
+
+/* ---------- FLIGHT BOARD ---------- */
+.board{padding:110px 0}
+.board-head{max-width:640px;margin-bottom:54px}
+.board-head h2{font-size:clamp(28px,3.2vw,40px);line-height:1.1}
+.board-head p{margin-top:14px;color:var(--dim)}
+.board-tbl{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:rgba(18,18,24,.45);backdrop-filter:blur(8px)}
+.b-row{display:grid;grid-template-columns:88px 1.1fr 1.6fr 150px;gap:24px;align-items:center;padding:24px 30px;border-bottom:1px solid var(--line)}
+.b-row:last-child{border-bottom:0}
+.b-row .idx{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--teal)}
+.b-row h4{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;letter-spacing:.01em}
+.b-row p{font-size:14.5px;color:var(--dim)}
+.b-row .eta{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;color:var(--faint);text-align:right}
+.b-foot{margin-top:18px;font-size:14px;color:var(--faint)}
+.b-foot b{color:var(--dim);font-weight:500}
+
+/* ---------- SELLER ---------- */
+.seller{padding:20px 0 110px}
+.s-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.s-tile{border:1px solid var(--line);border-radius:10px;padding:28px 26px;background:var(--panel);backdrop-filter:blur(8px);transition:border-color .3s,transform .3s var(--ease)}
+.s-tile:hover{border-color:var(--teal-soft);transform:translateY(-3px)}
+.s-tile .glyph{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;color:var(--teal);border:1px solid var(--teal-faint);width:38px;height:38px;border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.s-tile h4{font-size:16.5px;margin-bottom:6px;font-weight:700}
+.s-tile p{font-size:14px;color:var(--dim)}
+.s-head{max-width:620px;margin-bottom:50px}
+.s-head h2{font-size:clamp(28px,3.2vw,40px);line-height:1.1}
+.s-head p{margin-top:14px;color:var(--dim)}
+
+/* ---------- PROOF ---------- */
+.proof{padding:0 0 110px}
+.p-feature{border:1px solid var(--line);border-radius:12px;padding:56px 60px;background:linear-gradient(140deg,rgba(40,38,32,.55),rgba(18,18,24,.5));backdrop-filter:blur(8px);margin-bottom:18px}
+.p-feature blockquote{font-family:'Space Grotesk',sans-serif;font-size:clamp(22px,2.8vw,32px);font-weight:500;line-height:1.35;max-width:26ch}
+.p-feature footer{margin-top:28px;font-family:'IBM Plex Mono',monospace;font-size:13.5px;color:var(--dim)}
+.p-feature footer b{color:var(--teal);font-weight:500;display:block;margin-bottom:3px}
+.p-duo{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.p-card{border:1px solid var(--line);border-radius:12px;padding:36px;background:var(--panel);backdrop-filter:blur(8px)}
+.p-card blockquote{font-size:17px;font-weight:500;line-height:1.6}
+.p-card footer{margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--dim)}
+.p-card footer b{color:var(--teal);font-weight:500;display:block;margin-bottom:2px}
+
+/* ---------- PATHS ---------- */
+.paths{padding:0 0 110px}
+.paths-head{max-width:620px;margin-bottom:50px}
+.paths-head h2{font-size:clamp(28px,3.2vw,40px);line-height:1.1}
+.paths-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.path{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel);backdrop-filter:blur(8px);transition:border-color .3s}
+.path:hover{border-color:var(--teal-soft)}
+.path img{aspect-ratio:16/7;object-fit:cover;width:100%;filter:saturate(.55) brightness(.85) contrast(1.05)}
+.path-body{padding:32px 34px 36px}
+.path h3{font-size:22px;margin-bottom:8px}
+.path-body>p{font-size:15px;color:var(--dim);margin-bottom:22px}
+.spec{border-top:1px solid var(--line)}
+.spec div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.spec div:last-child{border-bottom:0}
+.spec span{color:var(--dim)}
+.spec b{font-family:'IBM Plex Mono',monospace;font-weight:500;color:#fff;white-space:nowrap}
+
+/* ---------- FINAL ---------- */
+.final{padding:60px 0 130px}
+.final-in{border:1px solid var(--teal-faint);border-radius:14px;padding:70px 64px;background:radial-gradient(700px 400px at 20% 0%,rgba(255,180,84,.1),transparent 60%),linear-gradient(150deg,rgba(36,37,45,.6),rgba(10,10,14,.4));display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:center;backdrop-filter:blur(8px)}
+.final h2{font-size:clamp(30px,3.8vw,48px);line-height:1.05}
+.final p{margin:20px 0 34px;color:var(--dim);max-width:42ch}
+.f-list{border-left:1px solid var(--teal-faint);padding-left:28px}
+.f-list h4{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.14em;color:var(--teal);margin-bottom:18px;font-weight:500}
+.f-list ol{list-style:none}
+.f-list li{padding:10px 0;font-size:15.5px;color:var(--dim);display:flex;gap:14px}
+.f-list li .mono{color:var(--teal);font-size:14px}
+.f-list .phone{margin-top:20px;padding-top:18px;border-top:1px solid var(--line);font-size:14px;color:var(--faint)}
+.f-list .phone b{color:var(--text);font-family:'IBM Plex Mono',monospace;font-weight:500}
+
+/* ---------- FOOTER ---------- */
+.footer{border-top:1px solid var(--line);padding:46px 0 38px;background:rgba(10,10,14,.8)}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
+.foot-in .brand{font-size:16px}
+.foot-in .brand img{height:30px}
+.foot-links{display:flex;gap:26px;font-size:14px;color:var(--dim);flex-wrap:wrap}
+.foot-links a:hover{color:var(--teal)}
+.foot-legal{margin-top:24px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--faint)}
+
+/* ---------- REVEAL ---------- */
+html.js .rv{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+html.js .rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html.js .rv{opacity:1;transform:none;transition:none}}
+
+/* ---------- MOBILE ---------- */
+@media(max-width:980px){
+  .g-grid{grid-template-columns:1fr 1fr}
+  .s-grid{grid-template-columns:1fr 1fr}
+  .p-duo,.paths-grid{grid-template-columns:1fr}
+  .final-in{grid-template-columns:1fr;padding:46px 34px}
+  .funnel-hud .wrap{flex-direction:column;align-items:flex-start;gap:30px}
+  .f-right{text-align:left}
+  .b-row{grid-template-columns:56px 1fr;grid-template-rows:auto auto;gap:8px 18px}
+  .b-row .eta{text-align:left;grid-column:2}
+  .b-row p{grid-column:2}
+  .nav-links{display:none}
+}
+@media(max-width:560px){
+  .g-grid,.s-grid{grid-template-columns:1fr}
+  .hero-in{padding-top:60px}
+  .p-feature{padding:36px 30px}
+}
+</style>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="brand"><img src="../img/sellershub-logo-white.png" alt="Sellers Hub logo">Sellers Hub</a>
+    <div class="nav-links">
+      <a href="#funnel">The machine</a>
+      <a href="#proof">Telemetry</a>
+      <a href="#paths">Two paths</a>
+    </div>
+    <a class="btn mag" href="https://calendly.com/virginia-bowers/initial-meeting">Book a call</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-in">
+    <div class="kicker">SALES RECRUITMENT, RUN LIKE AN OUTBOUND MOTION</div>
+    <h1>The machine that finds your next <span class="ghost">top seller.</span></h1>
+    <p>We map the whole market, score everyone in it, and deliver 3 to 5 finalists. You hire the one.</p>
+    <div class="hero-ctas">
+      <a class="btn mag" href="https://calendly.com/virginia-bowers/initial-meeting">Book a call</a>
+      <a class="btn btn-ghost" href="#funnel">Watch it work</a>
+    </div>
+  </div>
+  <div class="hero-meta">
+    <div class="wrap">
+      <span>INSURANCE / MANUFACTURING / B2B TECH</span>
+      <span class="mono" id="swarm-count">TRACKING 160 CANDIDATES</span>
+    </div>
+  </div>
+</header>
+
+<div class="logos">
+  <div class="wrap">
+    <span>ON THE BOARD FOR</span>
+    <img src="../img/logos/bystronic.svg" alt="Bystronic">
+    <img src="../img/logos/rocket.png" alt="Rocket Software">
+    <img src="../img/logos/bluecargo.svg" alt="BlueCargo">
+    <img src="../img/logos/paxiom.png" alt="Paxiom">
+    <img src="../img/logos/horn.svg" alt="Horn">
+    <img src="../img/logos/novahavens.png" alt="Nova Havens">
+  </div>
+</div>
+
+<section class="gauges">
+  <div class="wrap">
+    <div class="g-head rv">
+      <h2>Instruments we let clients read.</h2>
+      <p>Every number below is real, measured, and checked against us by the people who pay us.</p>
+    </div>
+    <div class="g-grid">
+      <div class="gauge rv" data-arc="80">
+        <svg viewBox="0 0 96 96" fill="none"><circle class="track" cx="48" cy="48" r="42" stroke-width="3"/><circle class="arc" cx="48" cy="48" r="42" stroke-width="3" transform="rotate(-90 48 48)"/></svg>
+        <b data-count="80" data-suffix="%+">0%+</b>
+        <small>of our placements hit over 90% of first-year budget</small>
+      </div>
+      <div class="gauge rv" data-arc="90">
+        <svg viewBox="0 0 96 96" fill="none"><circle class="track" cx="48" cy="48" r="42" stroke-width="3"/><circle class="arc" cx="48" cy="48" r="42" stroke-width="3" transform="rotate(-90 48 48)"/></svg>
+        <b data-count="90" data-suffix="%">0%</b>
+        <small>of clients came back for a second search in 2025</small>
+      </div>
+      <div class="gauge rv" data-arc="100">
+        <svg viewBox="0 0 96 96" fill="none"><circle class="track" cx="48" cy="48" r="42" stroke-width="3"/><circle class="arc" cx="48" cy="48" r="42" stroke-width="3" transform="rotate(-90 48 48)"/></svg>
+        <b data-count="30" data-suffix="+">0+</b>
+        <small>senior producers placed for one top-20 brokerage in 12 months</small>
+      </div>
+      <div class="gauge rv" data-arc="68">
+        <svg viewBox="0 0 96 96" fill="none"><circle class="track" cx="48" cy="48" r="42" stroke-width="3"/><circle class="arc" cx="48" cy="48" r="42" stroke-width="3" transform="rotate(-90 48 48)"/></svg>
+        <b data-count="41" data-suffix="">0</b>
+        <small>days from briefing to a signed senior enterprise AE at IBT Apps</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="funnel" id="funnel">
+  <div class="funnel-stage">
+    <div class="funnel-hud">
+      <div class="wrap">
+        <div class="f-left">
+          <div class="f-stage-label" id="f-label">MAPPING THE MARKET</div>
+          <h2>Watch a real search collapse to one hire.</h2>
+          <p id="f-copy">Every point of light is a real candidate we evaluated for one client. Scroll, and the machine does what it did in 41 days.</p>
+        </div>
+        <div class="f-right">
+          <div class="f-count mono" id="f-count">123</div>
+          <div class="f-count-label" id="f-count-label">CANDIDATES EVALUATED</div>
+          <div class="f-days" id="f-days">FILLED IN 41 DAYS / OFFER ACCEPTED</div>
+          <div class="f-src">IBT Apps search, actual figures</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="board">
+  <div class="wrap">
+    <div class="board-head rv">
+      <h2>The cadence, posted like a departure board.</h2>
+      <p>A committed search with a schedule you can hold us to. Weekly update meetings, live client portal, no dark weeks.</p>
+    </div>
+    <div class="board-tbl rv">
+      <div class="b-row"><span class="idx">01</span><h4 class="flap">Briefing</h4><p>45 to 60 minutes. Role, comp, territory, and what a top performer means in your business.</p><span class="eta">WEEK 1</span></div>
+      <div class="b-row"><span class="idx">02</span><h4 class="flap">Market mapping</h4><p>The full landscape of who sells in your space, including the passive candidates job boards never see.</p><span class="eta">WEEK 1-2</span></div>
+      <div class="b-row"><span class="idx">03</span><h4 class="flap">Outreach</h4><p>Multi-channel approaches to the people already doing the job at your competitors.</p><span class="eta">WEEK 2-3</span></div>
+      <div class="b-row"><span class="idx">04</span><h4 class="flap">SELLER assessment</h4><p>A scored two-step interview. Only scored finalists reach your calendar.</p><span class="eta">WEEK 3-4</span></div>
+      <div class="b-row"><span class="idx">05</span><h4 class="flap">Shortlist and close</h4><p>3 to 5 finalists with full scorecards. Interviews coordinated through to a signed offer.</p><span class="eta">WEEK 4-6</span></div>
+    </div>
+    <p class="b-foot rv">Typical US search runs <b>4 to 6 weeks</b>. Global seats typically fill in <b>under 4</b>.</p>
+  </div>
+</section>
+
+<section class="seller">
+  <div class="wrap">
+    <div class="s-head rv">
+      <h2>SELLER: the six checks behind every finalist.</h2>
+      <p>Charm in an interview is not one of them.</p>
+    </div>
+    <div class="s-grid">
+      <div class="s-tile rv"><div class="glyph">S</div><h4>Sales performance</h4><p>Verified track record. Quotas, rankings, real numbers.</p></div>
+      <div class="s-tile rv"><div class="glyph">E</div><h4>Expertise</h4><p>Depth in your industry and the buyers they will face.</p></div>
+      <div class="s-tile rv"><div class="glyph">L</div><h4>Learning agility</h4><p>How fast they absorb your product and your market.</p></div>
+      <div class="s-tile rv"><div class="glyph">L</div><h4>Likability</h4><p>Do buyers trust them. Do teams want them around.</p></div>
+      <div class="s-tile rv"><div class="glyph">E</div><h4>Execution and grit</h4><p>Persistence through long cycles and hard territories.</p></div>
+      <div class="s-tile rv"><div class="glyph">R</div><h4>Role fit</h4><p>Alignment with this seat, this comp plan, this stage.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="proof" id="proof">
+  <div class="wrap">
+    <div class="p-feature rv">
+      <blockquote>"We've placed 11 people together across two vastly different industries. One of the last two hires is now number three in the company."</blockquote>
+      <footer><b>NICK HOGGAN</b>VP of Sales, Adlumin</footer>
+    </div>
+    <div class="p-duo">
+      <div class="p-card rv">
+        <blockquote>"Sellers Hub actually does the work. You're looking through 2 or 3 candidates instead of 200."</blockquote>
+        <footer><b>MARK DITTMAN</b>IBT Apps</footer>
+      </div>
+      <div class="p-card rv">
+        <blockquote>"They understood the unique intersection of logistics expertise and technical enterprise sales this role required."</blockquote>
+        <footer><b>LEADERSHIP TEAM</b>BlueCargo.ai</footer>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="paths" id="paths">
+  <div class="wrap">
+    <div class="paths-head rv">
+      <h2>Two ways to run the machine.</h2>
+    </div>
+    <div class="paths-grid">
+      <div class="path rv">
+        <img src="../img/stock/sales.jpg" alt="US sales team in a meeting">
+        <div class="path-body">
+          <h3>US Sales Headhunting</h3>
+          <p>Partner-led committed searches, producers to VP level.</p>
+          <div class="spec">
+            <div><span>Typical timeline</span><b>4 to 6 weeks</b></div>
+            <div><span>Replacement guarantee</span><b>Up to 2 years</b></div>
+            <div><span>Ever need the guarantee</span><b>Under 5%</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="path rv">
+        <img src="../img/stock/global.jpg" alt="Global team collaborating">
+        <div class="path-body">
+          <h3>Global Talent Solutions</h3>
+          <p>Offshore SDRs, BDRs, AEs, CS, and RevOps, vetted to the same SELLER bar.</p>
+          <div class="spec">
+            <div><span>Cost vs comparable US hire</span><b>60 to 80% less</b></div>
+            <div><span>Typical placement</span><b>Under 4 weeks</b></div>
+            <div><span>Coverage</span><b>6 months</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="final-in rv">
+      <div>
+        <h2>Your open territory is bleeding pipeline. Start the machine.</h2>
+        <p>Thirty minutes with a specialist. You leave with an honest read on the talent market for your seat, whether or not we work together.</p>
+        <a class="btn mag" href="https://calendly.com/virginia-bowers/initial-meeting">Book a call</a>
+      </div>
+      <div class="f-list">
+        <h4>ON THE CALL</h4>
+        <ol>
+          <li><span class="mono">01</span>You describe the seat, the comp, and what has not worked.</li>
+          <li><span class="mono">02</span>We give you a straight read on the market for that role.</li>
+          <li><span class="mono">03</span>If it fits, we scope the search. If not, we say so.</li>
+        </ol>
+        <div class="phone">Prefer the phone? <b>1-855-6-SELLERS</b>, answered within 24 hours.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-in">
+      <span class="brand"><img src="../img/sellershub-logo-white.png" alt="Sellers Hub logo">Sellers Hub</span>
+      <div class="foot-links">
+        <a href="#">US Sales Recruitment</a>
+        <a href="#">Global Talent</a>
+        <a href="#">Success Stories</a>
+        <a href="#">Blog</a>
+        <a href="#">For Job Seekers</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+    <div class="foot-legal">© 2026 SELLERS HUB · PRIVACY POLICY · 1-855-6-SELLERS</div>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- reveals ---------- */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+}), { threshold: .16 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+/* ---------- gauges: arcs + count-ups ---------- */
+const gio = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  const g = e.target, pct = +g.dataset.arc, arc = g.querySelector('.arc');
+  const C = 2 * Math.PI * 42;
+  arc.style.strokeDasharray = C;
+  arc.style.strokeDashoffset = C;
+  requestAnimationFrame(() => { arc.style.strokeDashoffset = C * (1 - pct / 100); });
+  const b = g.querySelector('b'), target = +b.dataset.count, suf = b.dataset.suffix;
+  if (REDUCE) { b.textContent = target + suf; gio.unobserve(g); return; }
+  const t0 = performance.now(), D = 1500;
+  (function tick(t) {
+    const p = Math.min((t - t0) / D, 1), ease = 1 - Math.pow(1 - p, 3);
+    b.textContent = Math.round(target * ease) + suf;
+    if (p < 1) requestAnimationFrame(tick);
+  })(t0);
+  gio.unobserve(g);
+}), { threshold: .5 });
+document.querySelectorAll('.gauge').forEach(g => gio.observe(g));
+
+/* ---------- magnetic CTA ---------- */
+if (!REDUCE) document.querySelectorAll('.mag').forEach(btn => {
+  btn.addEventListener('pointermove', e => {
+    const r = btn.getBoundingClientRect();
+    const dx = (e.clientX - r.left - r.width / 2) / (r.width / 2);
+    const dy = (e.clientY - r.top - r.height / 2) / (r.height / 2);
+    btn.style.transform = `translate(${dx * 6}px, ${dy * 5}px)`;
+  });
+  btn.addEventListener('pointerleave', () => { btn.style.transform = ''; });
+});
+
+/* ---------- split-flap settle on board titles ---------- */
+const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const fio = new IntersectionObserver(es => es.forEach(en => {
+  if (!en.isIntersecting) return;
+  fio.unobserve(en.target);
+  if (REDUCE) return;
+  const el = en.target, final = el.textContent;
+  let frame = 0;
+  const iv = setInterval(() => {
+    frame++;
+    el.textContent = final.split('').map((ch, i) => {
+      if (ch === ' ' || frame > i + 4) return ch;
+      return GLYPHS[(Math.random() * 26) | 0];
+    }).join('');
+    if (frame > final.length + 4) { el.textContent = final; clearInterval(iv); }
+  }, 34);
+}), { threshold: .6 });
+document.querySelectorAll('.flap').forEach(el => fio.observe(el));
+
+/* ==========================================================
+   THE SKY: 2.5D talent constellation + funnel collapse
+   Preallocated arrays, cached glow sprites, DPR<=2,
+   paused when hidden, disabled under reduced motion.
+   ========================================================== */
+(function () {
+  if (REDUCE) return;
+  const cv = document.getElementById('sky');
+  const ctx = cv.getContext('2d');
+  let W = 0, H = 0, DPR = 1;
+  const MOBILE = matchMedia('(max-width: 720px)').matches;
+  const N = MOBILE ? 70 : 160;
+  const FOV = 520;
+
+  // preallocated state
+  const px = new Float32Array(N), py = new Float32Array(N), pz = new Float32Array(N);
+  const vx = new Float32Array(N), vy = new Float32Array(N), vz = new Float32Array(N);
+  const tx = new Float32Array(N), ty = new Float32Array(N);   // funnel targets (screen space)
+  const sx = new Float32Array(N), sy = new Float32Array(N), ss = new Float32Array(N); // projected
+  const seed = new Float32Array(N);
+
+  // glow sprites (teal, bright, amber star)
+  function sprite(color, r) {
+    const c = document.createElement('canvas'); c.width = c.height = r * 2;
+    const g = c.getContext('2d');
+    const grad = g.createRadialGradient(r, r, 0, r, r, r);
+    grad.addColorStop(0, color);
+    grad.addColorStop(.35, color.replace('1)', '.5)'));
+    grad.addColorStop(1, 'rgba(0,0,0,0)');
+    g.fillStyle = grad; g.fillRect(0, 0, r * 2, r * 2);
+    return c;
+  }
+  const SP_DIM = sprite('rgba(225,205,170,1)', 26);
+  const SP_TEAL = sprite('rgba(255,180,84,1)', 34);
+  const SP_STAR = sprite('rgba(255,236,200,1)', 70);
+
+  function resize() {
+    DPR = Math.min(devicePixelRatio || 1, 2);
+    W = innerWidth; H = innerHeight;
+    cv.width = W * DPR; cv.height = H * DPR;
+    cv.style.width = W + 'px'; cv.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    computeTargets();
+  }
+
+  function computeTargets() {
+    // funnel screen-space targets: wide cloud on the left collapsing to a focus right of center
+    const fx = W * .62, fy = H * .52;
+    for (let i = 0; i < N; i++) {
+      const t = i / N;
+      const lane = (seed[i] - .5) * 2;                    // -1..1
+      const xNorm = Math.pow(t, .8);                       // distribution along funnel
+      tx[i] = W * .12 + (fx - W * .12) * xNorm;
+      ty[i] = fy + lane * H * .32 * (1 - xNorm * .92);
+    }
+  }
+
+  for (let i = 0; i < N; i++) {
+    seed[i] = Math.abs(Math.sin(i * 12.9898) * 43758.5453) % 1;
+    px[i] = (seed[i] - .5) * 1600;
+    py[i] = ((Math.abs(Math.sin(i * 78.233) * 12543.21) % 1) - .5) * 900;
+    pz[i] = 120 + (Math.abs(Math.sin(i * 3.7) * 999) % 1) * 620;
+    vx[i] = (seed[i] - .5) * .22;
+    vy[i] = ((Math.abs(Math.sin(i * 5.1) * 999) % 1) - .5) * .18;
+    vz[i] = ((Math.abs(Math.sin(i * 9.3) * 999) % 1) - .5) * .12;
+  }
+
+  // pointer parallax
+  let camX = 0, camY = 0, tgX = 0, tgY = 0;
+  addEventListener('pointermove', e => {
+    tgX = (e.clientX / W - .5) * 60;
+    tgY = (e.clientY / H - .5) * 40;
+  }, { passive: true });
+
+  // dev hook: ?p=0.5 pins funnel progress for design QA (harmless in prod)
+  const DEVP = new URLSearchParams(location.search).get('p');
+  const funnelSec = document.getElementById('funnel');
+  if (DEVP !== null) {
+    funnelSec.style.height = '100vh';
+    document.querySelector('.funnel-stage').style.position = 'relative';
+  }
+  const fCount = document.getElementById('f-count');
+  const fCountLabel = document.getElementById('f-count-label');
+  const fLabel = document.getElementById('f-label');
+  const fDays = document.getElementById('f-days');
+  const swarmEl = document.getElementById('swarm-count');
+  const STAGES = [
+    [0.00, 123, 'CANDIDATES EVALUATED', 'MAPPING THE MARKET'],
+    [0.38, 32, 'SCREENED AND SCORED', 'SELLER ASSESSMENT RUNNING'],
+    [0.66, 3, 'FINALISTS PRESENTED', 'SHORTLIST DELIVERED'],
+    [0.88, 1, 'PERFORMING HIRE', 'OFFER SIGNED'],
+  ];
+  let lastStage = -1, shownCount = 123;
+
+  let running = true;
+  document.addEventListener('visibilitychange', () => { running = !document.hidden; if (running) requestAnimationFrame(loop); });
+
+  const three = [N - 1, N - 2, N - 3]; // survivors
+  const star = N - 1;
+
+  function loop(now) {
+    if (!running) return;
+    ctx.clearRect(0, 0, W, H);
+
+    // funnel progress
+    let p = 0;
+    if (DEVP !== null) { p = Math.min(Math.max(parseFloat(DEVP) || 0, 0), 1); }
+    else {
+      const r = funnelSec.getBoundingClientRect();
+      if (r.top < H && r.bottom > 0) {
+        p = Math.min(Math.max(-r.top / (r.height - H), 0), 1);
+      } else if (r.bottom <= 0) p = 1;
+    }
+
+    // stage HUD
+    let si = 0;
+    for (let k = STAGES.length - 1; k >= 0; k--) if (p >= STAGES[k][0]) { si = k; break; }
+    if (si !== lastStage) {
+      lastStage = si;
+      fCountLabel.textContent = STAGES[si][2];
+      fLabel.textContent = STAGES[si][3];
+      fDays.classList.toggle('on', si === 3);
+    }
+    // tick the number toward stage value
+    const target = STAGES[si][1];
+    shownCount += (target - shownCount) * .3;
+    const shown = Math.max(Math.round(shownCount), target);
+    fCount.textContent = shown;
+
+    camX += (tgX - camX) * .04;
+    camY += (tgY - camY) * .04;
+
+    const cx = W / 2, cy = H / 2;
+    const ease = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; // easeInOutQuad
+    const drift = 1 - ease;
+
+    // physics + projection
+    for (let i = 0; i < N; i++) {
+      px[i] += vx[i] * drift; py[i] += vy[i] * drift; pz[i] += vz[i] * drift;
+      if (px[i] > 850) px[i] = -850; if (px[i] < -850) px[i] = 850;
+      if (py[i] > 500) py[i] = -500; if (py[i] < -500) py[i] = 500;
+      if (pz[i] < 100) pz[i] = 740; if (pz[i] > 740) pz[i] = 100;
+
+      const s = FOV / pz[i];
+      let X = cx + (px[i] + camX * (s * .6)) * s * .55;
+      let Y = cy + (py[i] + camY * (s * .6)) * s * .55;
+
+      // converge toward funnel targets
+      if (ease > 0) {
+        const killT = seed[i];             // when this candidate drops out
+        let e2 = ease;
+        if (!three.includes(i)) {
+          // non survivors overshoot their target then fade
+          X = X + (tx[i] - X) * e2;
+          Y = Y + (ty[i] - Y) * e2;
+        } else {
+          const fx = W * .62, fy = H * .52;
+          X = X + (fx + (i - star) * 46 - X) * e2;
+          Y = Y + (fy + (i - star) * 26 - Y) * e2;
+        }
+      }
+      sx[i] = X; sy[i] = Y; ss[i] = s;
+    }
+
+    // connective tissue (swarm mode only)
+    if (ease < .55) {
+      ctx.globalCompositeOperation = 'lighter';
+      ctx.lineWidth = 1;
+      const alphaBase = .13 * (1 - ease / .55);
+      for (let i = 0; i < N; i++) {
+        for (let j = i + 1; j < N; j++) {
+          const dx = sx[i] - sx[j], dy = sy[i] - sy[j];
+          const d2 = dx * dx + dy * dy;
+          if (d2 < 12100) {
+            const a = alphaBase * (1 - d2 / 12100);
+            ctx.strokeStyle = 'rgba(255,180,84,' + a.toFixed(3) + ')';
+            ctx.beginPath(); ctx.moveTo(sx[i], sy[i]); ctx.lineTo(sx[j], sy[j]); ctx.stroke();
+          }
+        }
+      }
+    }
+
+    // particles
+    ctx.globalCompositeOperation = 'lighter';
+    for (let i = 0; i < N; i++) {
+      const surv = three.includes(i);
+      // fade dropped candidates as funnel completes
+      let alpha = 1;
+      if (ease > .55 && !surv) alpha = Math.max(1 - (ease - .55) / .4 - seed[i] * .3, 0);
+      if (alpha <= 0) continue;
+      const isStar = i === star && ease > .8;
+      const spr = isStar ? SP_STAR : (surv && ease > .5 ? SP_TEAL : (seed[i] > .8 ? SP_TEAL : SP_DIM));
+      const pulse = isStar ? (1 + Math.sin(now * .004) * .18) : 1;
+      // the star and finalists render at fixed screen scale so the finale reads big
+      const size = isStar ? 150 * pulse
+        : (surv && ease > .5 ? 36 + 10 * Math.sin(now * .003 + i)
+        : 9 * ss[i] * .9);
+      ctx.globalAlpha = alpha * (isStar ? 1 : .8);
+      ctx.drawImage(spr, sx[i] - size / 2, sy[i] - size / 2, size, size);
+    }
+    ctx.globalAlpha = 1;
+    ctx.globalCompositeOperation = 'source-over';
+
+    requestAnimationFrame(loop);
+  }
+
+  addEventListener('resize', resize);
+  resize();
+  swarmEl.textContent = 'TRACKING ' + N + ' CANDIDATES';
+  requestAnimationFrame(loop);
+})();
+
+/* reduced-motion / no-canvas fallback: fix the funnel HUD to final honest state */
+if (REDUCE) {
+  document.getElementById('f-count').textContent = '123';
+  document.getElementById('f-days').classList.add('on');
+}
+</script>
+</body>
+</html>

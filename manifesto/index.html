@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Sellers Hub | Stop interviewing resumes</title>
+<meta name="description" content="Sellers Hub is a partner led sales recruiting firm. A position on why the resume pile fails, and what a scored search looks like.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Spline+Sans+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+/* ============================================================
+   MANIFESTO - an editorial broadside for Sellers Hub
+   Paper #FAF7EF / Ink #1C1A14 / Marker #30C8C8 / Stamp #B3261E
+   ============================================================ */
+:root{
+  --paper:#FAF7EF;
+  --paper-deep:#F2EDE0;
+  --ink:#1C1A14;
+  --ink-soft:#3C382C;
+  --teal:#30C8C8;
+  --teal-ink:#0E7B7B;
+  --pencil:#6C6552;
+  --rule:#D6D0BE;
+  --stamp:#B3261E;
+  --font-d:"Archivo",system-ui,sans-serif;
+  --mono:"Spline Sans Mono",ui-monospace,monospace;
+  --ease-out:cubic-bezier(.22,1,.36,1);
+  --ease-snap:cubic-bezier(.34,1.56,.5,1);
+  --ease-fling:cubic-bezier(.3,.02,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-d);
+  font-weight:420;
+  font-variation-settings:'wght' 420,'wdth' 100;
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--teal);color:var(--ink)}
+
+/* Paper grain: fixed, procedural, never intercepts */
+.grain{
+  position:fixed;inset:0;z-index:60;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.055'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply;
+}
+
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit}
+
+h1,h2,h3{font-family:var(--font-d);line-height:1.02;letter-spacing:-0.015em;text-wrap:balance}
+
+/* ---------- shared layout ---------- */
+.band{padding:0 clamp(20px,5vw,72px)}
+.measure{max-width:1240px;margin:0 auto}
+.row{display:grid;grid-template-columns:minmax(0,1fr) 264px;gap:clamp(24px,4vw,64px);align-items:start}
+.row > .main{min-width:0}
+@media (max-width:900px){.row{grid-template-columns:1fr}}
+
+.kicker{
+  font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--pencil);display:flex;align-items:center;gap:14px;
+}
+.kicker::before{content:"";width:34px;height:1px;background:var(--ink);flex:none}
+
+.rule-heavy{border:none;border-top:3px solid var(--ink);margin:0}
+.rule-thin{border:none;border-top:1px solid var(--rule);margin:0}
+
+/* margin annotations: the editor's pencil */
+.annot{
+  font-family:var(--mono);font-size:13px;line-height:1.6;color:var(--pencil);
+  border-left:2px solid var(--teal);padding-left:14px;
+  max-width:264px;
+}
+.annot b{color:var(--ink);font-weight:500}
+.annot .no{color:var(--teal-ink);font-weight:500}
+@media (max-width:900px){.annot{margin-top:18px;max-width:520px}}
+
+/* reveal choreography (gated behind html.js; visible without JS) */
+html.js .fx{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
+html.js .fx.inview{opacity:1;transform:none}
+html.js .fx-2{transition-delay:.12s}
+html.js .fx-3{transition-delay:.24s}
+
+/* breathing display type: variable axes as motion */
+.breathe{font-variation-settings:'wght' 560,'wdth' 76;transition:font-variation-settings 1.2s var(--ease-out)}
+html.js .breathe.inview,html:not(.js) .breathe{font-variation-settings:'wght' 900,'wdth' 104}
+
+/* highlighter hover on links */
+.hl-link{
+  position:relative;text-decoration:none;font-weight:600;white-space:nowrap;
+  z-index:0;
+}
+.hl-link::before{
+  content:"";position:absolute;inset:.05em -.18em -.12em -.18em;z-index:-1;
+  background:var(--teal);opacity:0;transform:scaleX(.2) rotate(-1deg);transform-origin:left center;
+  border-radius:.35em .2em .4em .25em;
+  transition:transform .28s var(--ease-out),opacity .2s ease;
+}
+.hl-link:hover::before,.hl-link:focus-visible::before{opacity:.85;transform:scaleX(1) rotate(-1deg)}
+.hl-link::after{content:"";position:absolute;left:0;right:0;bottom:-.08em;height:2px;background:var(--teal)}
+
+/* buttons */
+.btn{
+  display:inline-flex;align-items:center;gap:12px;
+  background:var(--ink);color:var(--paper);text-decoration:none;
+  font-family:var(--font-d);font-weight:700;font-variation-settings:'wght' 700,'wdth' 100;
+  font-size:16px;letter-spacing:.01em;
+  padding:16px 28px;border:2px solid var(--ink);
+  transition:background .25s ease,color .25s ease,transform .3s var(--ease-snap),box-shadow .3s var(--ease-out);
+  box-shadow:4px 4px 0 var(--teal);
+}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--teal)}
+.btn:active{transform:translate(1px,1px);box-shadow:2px 2px 0 var(--teal)}
+.btn svg{transition:transform .3s var(--ease-snap)}
+.btn:hover svg{transform:translateX(4px)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:none}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--teal-ink);outline-offset:3px}
+
+/* ============================================================
+   MASTHEAD
+   ============================================================ */
+.masthead{border-bottom:3px solid var(--ink)}
+.masthead .measure{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:16px 0;
+}
+.wordmark{display:flex;align-items:center;gap:12px;text-decoration:none}
+.wordmark img{width:40px;height:40px}
+.wordmark .wm{
+  font-weight:800;font-variation-settings:'wght' 800,'wdth' 112;
+  font-size:20px;letter-spacing:.02em;text-transform:uppercase;
+}
+.masthead .dateline{
+  font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--pencil);
+  display:none;
+}
+@media (min-width:980px){.masthead .dateline{display:block}}
+.masthead .btn{padding:11px 20px;font-size:14px;box-shadow:3px 3px 0 var(--teal)}
+
+/* ============================================================
+   HERO - the verdict
+   ============================================================ */
+.hero{position:relative;padding-top:clamp(48px,9vh,110px);padding-bottom:clamp(56px,10vh,120px)}
+.hero .kicker{margin-bottom:clamp(28px,4vh,48px)}
+.verdict{
+  font-size:clamp(44px,8.6vw,142px);
+  font-weight:900;font-variation-settings:'wght' 900,'wdth' 104;
+  line-height:.98;letter-spacing:-0.02em;
+  text-transform:none;
+  max-width:16ch;
+}
+.verdict .line{display:block;position:relative;width:fit-content}
+
+/* misregistration plates: teal plate starts 3px off, snaps into register */
+html.js .plate{position:relative;z-index:0}
+html.js .plate::before{
+  content:attr(data-text);position:absolute;inset:0;z-index:-1;
+  color:var(--stamp);mix-blend-mode:multiply;
+  transform:translate(4px,-4px);
+  opacity:1;
+  transition:transform .55s var(--ease-snap),opacity .4s ease .5s;
+}
+html.js .hero.registered .plate::before{transform:translate(0,0);opacity:0}
+html:not(.js) .plate::before{content:none}
+
+/* the strike through "resumes": hand drawn, ink bleed edges */
+.strike-word{position:relative;display:inline-block}
+.strike-word svg{
+  position:absolute;left:-3%;top:8%;width:106%;height:92%;
+  overflow:visible;pointer-events:none;
+}
+.strike-word path{
+  fill:none;stroke:var(--ink);stroke-linecap:round;
+  filter:url(#inkbleed);
+}
+.strike-word .s1{stroke-width:7}
+.strike-word .s2{stroke-width:5;opacity:.85}
+html.js .strike-word path{stroke-dasharray:1;stroke-dashoffset:1}
+html.js .hero.struck .strike-word .s1{transition:stroke-dashoffset .55s cubic-bezier(.5,0,.3,1);stroke-dashoffset:0}
+html.js .hero.struck .strike-word .s2{transition:stroke-dashoffset .45s cubic-bezier(.5,0,.3,1) .3s;stroke-dashoffset:0}
+
+/* the teal highlighter behind "sellers": a real marker sweep */
+.hl{position:relative;z-index:0;display:inline-block}
+.hl::before{
+  content:"";position:absolute;inset:.06em -.14em -.04em -.1em;z-index:-1;
+  background:var(--teal);
+  border-radius:.6em .25em .7em .3em / .5em .7em .3em .6em;
+  transform:scaleX(0) rotate(-1.2deg);transform-origin:left center;
+  filter:url(#inkbleed);
+}
+.hl::after{
+  content:"";position:absolute;left:-.06em;right:-.1em;top:.34em;bottom:.02em;z-index:-1;
+  background:var(--teal);opacity:.5;
+  border-radius:.4em .6em .3em .5em;
+  transform:scaleX(0) rotate(-.6deg);transform-origin:left center;
+}
+html.js .hero.swept .hl::before{transition:transform .5s cubic-bezier(.6,.04,.25,1);transform:scaleX(1) rotate(-1.2deg)}
+html.js .hero.swept .hl::after{transition:transform .45s cubic-bezier(.6,.04,.25,1) .12s;transform:scaleX(1) rotate(-.6deg)}
+html:not(.js) .hl::before{transform:scaleX(1) rotate(-1.2deg)}
+html:not(.js) .hl::after{transform:scaleX(1) rotate(-.6deg)}
+
+/* hero line entrances */
+html.js .verdict .line{opacity:0;transform:translateY(.35em)}
+html.js .hero.registered .verdict .line{opacity:1;transform:none;transition:opacity .6s var(--ease-out),transform .7s var(--ease-out)}
+html.js .hero.registered .verdict .l2{transition-delay:.35s}
+
+.hero .deck{
+  margin-top:clamp(28px,4vh,44px);
+  font-size:clamp(17px,1.6vw,21px);line-height:1.6;max-width:56ch;color:var(--ink-soft);
+}
+.hero .cta-row{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:34px}
+
+/* printers' registration marks (pass 3 upgrade) */
+.regmark{position:absolute;width:26px;height:26px;opacity:.5;pointer-events:none}
+.regmark svg{width:100%;height:100%}
+.regmark.tl{top:18px;left:18px}
+.regmark.tr{top:18px;right:18px}
+.regmark.bl{bottom:18px;left:18px}
+.regmark.br{bottom:18px;right:18px}
+@media (max-width:700px){.regmark{display:none}}
+
+/* ============================================================
+   PROOF BAND - the record, before the rhetoric
+   ============================================================ */
+.proof{border-top:3px solid var(--ink);border-bottom:1px solid var(--rule);padding-top:clamp(40px,6vh,64px);padding-bottom:clamp(44px,7vh,72px)}
+.proof .kicker{margin-bottom:38px}
+.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3.5vw,56px)}
+@media (max-width:860px){.statgrid{grid-template-columns:1fr;gap:36px}}
+.stat{border-top:1px solid var(--ink);padding-top:18px;position:relative}
+.stat .big{
+  font-weight:900;font-variation-settings:'wght' 900,'wdth' 96;
+  font-size:clamp(56px,6.4vw,104px);line-height:1;letter-spacing:-0.02em;
+  font-feature-settings:"tnum";
+}
+.stat .big sup{font-size:.45em;vertical-align:.65em;color:var(--teal-ink)}
+.stat .claim{margin-top:10px;font-size:16px;line-height:1.55;max-width:34ch;color:var(--ink-soft)}
+.stat .annot{margin-top:16px;border-left-color:var(--rule)}
+.stat .annot{max-width:none}
+
+/* ============================================================
+   THE PILE - 200 vs 3
+   ============================================================ */
+.pile-section{position:relative;height:340vh}
+.pile-sticky{
+  position:sticky;top:0;height:100vh;min-height:620px;
+  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+  align-items:center;gap:clamp(16px,3vw,56px);
+  padding:0 clamp(20px,5vw,72px);
+  max-width:1240px;margin:0 auto;
+  overflow:visible;
+}
+@media (max-width:860px){
+  .pile-section{height:300vh}
+  .pile-sticky{grid-template-columns:1fr;align-content:center;gap:8px;min-height:560px}
+}
+.pile-copy .kicker{margin-bottom:22px}
+.pile-copy h2{
+  font-size:clamp(30px,3.6vw,54px);font-weight:850;
+  font-variation-settings:'wght' 850,'wdth' 100;
+  max-width:15ch;
+}
+.pile-counter{
+  font-family:var(--mono);font-weight:500;
+  font-size:clamp(88px,13vw,220px);line-height:1;letter-spacing:-0.04em;
+  font-feature-settings:"tnum";
+  margin-top:8px;
+  color:var(--ink);
+}
+.pile-counter .unit{font-size:.16em;letter-spacing:.14em;color:var(--pencil);display:block;margin-top:6px;text-transform:uppercase;font-weight:400}
+.pile-quotebox{margin-top:26px;max-width:44ch}
+.pile-quotebox blockquote{font-size:clamp(16px,1.4vw,19px);line-height:1.6;color:var(--ink-soft)}
+.pile-quotebox blockquote strong{color:var(--ink)}
+.pile-quotebox figcaption{font-family:var(--mono);font-size:13px;color:var(--pencil);margin-top:10px}
+html.js .pile-quotebox{opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out)}
+html.js .pile-sticky.survivors .pile-quotebox{opacity:1;transform:none}
+
+/* the stack */
+.stack-stage{position:relative;height:min(64vh,560px);min-height:420px;perspective:1400px}
+.rcard{
+  position:absolute;left:50%;top:50%;
+  width:min(240px,58vw);height:320px;
+  margin-left:-120px;margin-top:-172px;
+  transform:
+    translate3d(var(--x,0),var(--y,0),0)
+    rotate(var(--r,0deg));
+  transition:transform 1s var(--ease-fling),opacity .9s ease;
+  will-change:transform;
+}
+@media (max-width:400px){.rcard{height:290px;margin-top:-158px}}
+.rcard-inner{
+  position:relative;width:100%;height:100%;
+  transform-style:preserve-3d;
+  transition:transform .9s var(--ease-snap);
+}
+.rcard.flip .rcard-inner{transform:rotateY(180deg)}
+.rface{
+  position:absolute;inset:0;backface-visibility:hidden;
+  background:#FFFFFF;border:1px solid #DDD6C4;
+  box-shadow:0 10px 24px rgba(27,40,86,.14),0 2px 4px rgba(27,40,86,.08);
+  padding:18px 16px;overflow:hidden;
+}
+.rface.back{transform:rotateY(180deg);background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.rname{height:13px;width:62%;background:var(--ink);opacity:.88;border-radius:1px}
+.rname.w2{width:44%}
+.rtitle{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--pencil);margin-top:9px}
+.rline{font-size:11.5px;line-height:1.5;color:#4A4536;margin-top:8px}
+.rline::before{content:"";display:inline-block;width:4px;height:4px;background:var(--rule);border-radius:50%;margin-right:7px;vertical-align:2px}
+.rmeta{position:absolute;bottom:12px;left:16px;right:16px;border-top:1px solid #E9E3D2;padding-top:8px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#A69E88;display:flex;justify-content:space-between}
+
+/* fling trajectories: staggered, physical */
+.rcard.flung{opacity:0}
+.rcard.flung.t1{transform:translate3d(-120vw,-30vh,0) rotate(-64deg)}
+.rcard.flung.t2{transform:translate3d(120vw,-16vh,0) rotate(58deg)}
+.rcard.flung.t3{transform:translate3d(-115vw,22vh,0) rotate(-38deg)}
+.rcard.flung.t4{transform:translate3d(118vw,30vh,0) rotate(46deg)}
+.rcard.flung.t5{transform:translate3d(-70vw,-90vh,0) rotate(-88deg)}
+.rcard.flung.t6{transform:translate3d(76vw,-86vh,0) rotate(80deg)}
+
+/* the ONE stamp-red editorial accent */
+.stamp{
+  position:absolute;top:34%;left:50%;
+  transform:translate(-50%,-50%) rotate(-11deg) scale(2.4);
+  opacity:0;
+  font-weight:900;font-variation-settings:'wght' 900,'wdth' 112;
+  font-size:clamp(26px,3vw,40px);letter-spacing:.14em;
+  color:var(--stamp);
+  border:4px double var(--stamp);
+  padding:6px 18px;
+  pointer-events:none;
+  z-index:40;
+  mix-blend-mode:multiply;
+  filter:url(#inkbleed);
+  transition:transform .32s cubic-bezier(.5,1.8,.6,1),opacity .18s ease;
+}
+.stack-stage.stamped .stamp{opacity:.92;transform:translate(-50%,-50%) rotate(-11deg) scale(1)}
+.stack-stage.cleared .stamp{opacity:0;transition:opacity .4s ease}
+
+/* survivor scorecard back */
+.scorehead{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--stamp);border-bottom:1px solid rgba(179,38,30,.4);padding-bottom:8px}
+.scoretitle{font-weight:800;font-variation-settings:'wght' 800,'wdth' 104;font-size:17px;margin-top:10px;line-height:1.2}
+.seller-rows{margin-top:12px;display:grid;gap:6px}
+.seller-rows .sr{display:flex;align-items:center;gap:9px;font-size:11.5px;line-height:1.3}
+.sr .lt{font-family:var(--mono);font-weight:500;color:var(--stamp);width:12px;flex:none}
+.sr svg{flex:none;margin-left:auto}
+.scorefoot{position:absolute;bottom:12px;left:16px;right:16px;border-top:1px solid rgba(247,247,242,.22);padding-top:8px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,247,242,.75)}
+
+/* reduced motion: pile shows the end state, statically */
+@media (prefers-reduced-motion:reduce){
+  .pile-section{height:auto;padding:80px 0}
+  .pile-sticky{position:static;height:auto;min-height:0}
+  .rcard{transition:none}
+  .rcard.rm-hide{display:none}
+  .rcard.rm-keep{position:absolute}
+  html.js .pile-quotebox{opacity:1;transform:none}
+  .stamp{display:none}
+}
+
+/* ============================================================
+   FAILURE MODES - three crossed-out headlines
+   ============================================================ */
+.fails{padding-top:clamp(72px,12vh,140px);padding-bottom:clamp(48px,8vh,96px);border-top:3px solid var(--ink)}
+.fails .kicker{margin-bottom:20px}
+.fails .lede{font-size:clamp(17px,1.5vw,20px);max-width:52ch;color:var(--ink-soft)}
+.fail{padding:clamp(44px,7vh,84px) 0;border-bottom:1px solid var(--rule)}
+.fail:last-of-type{border-bottom:none}
+.fail h3{
+  font-size:clamp(40px,7.2vw,118px);
+  font-weight:880;line-height:1;
+  letter-spacing:-0.02em;
+  width:fit-content;position:relative;
+  max-width:100%;
+}
+.fail .fstrike{position:absolute;left:-2%;top:6%;width:104%;height:94%;overflow:visible;pointer-events:none}
+.fail .fstrike path{fill:none;stroke:var(--stamp);stroke-width:clamp(6px,.9vw,13px);stroke-linecap:round;filter:url(#inkbleed);opacity:.92;mix-blend-mode:multiply}
+html.js .fail .fstrike path{stroke-dasharray:1;stroke-dashoffset:1}
+html.js .fail.inview .fstrike path{transition:stroke-dashoffset .6s cubic-bezier(.5,0,.3,1) .15s;stroke-dashoffset:0}
+.fail .fixrow{display:grid;grid-template-columns:120px minmax(0,1fr);gap:18px;margin-top:26px;max-width:820px}
+@media (max-width:640px){.fail .fixrow{grid-template-columns:1fr;gap:8px}}
+.fail .fixtag{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-ink);padding-top:4px}
+.fail .fix{font-size:clamp(16px,1.45vw,19px);line-height:1.6;color:var(--ink-soft)}
+.fail .fix strong{color:var(--ink);font-weight:650}
+
+/* ============================================================
+   METHOD - typeset in five steps
+   ============================================================ */
+.method{border-top:3px solid var(--ink);padding-top:clamp(48px,7vh,80px);padding-bottom:clamp(56px,9vh,110px)}
+.method .kicker{margin-bottom:18px}
+.method h2{font-size:clamp(32px,4.4vw,64px);font-weight:880;max-width:18ch;margin-bottom:8px}
+.steps{margin-top:clamp(36px,5vh,56px);border-top:1px solid var(--ink)}
+.step{
+  display:grid;grid-template-columns:88px minmax(0,1.1fr) minmax(0,1.6fr);
+  gap:clamp(16px,3vw,44px);
+  padding:26px 0;border-bottom:1px solid var(--rule);
+  align-items:baseline;
+}
+@media (max-width:760px){.step{grid-template-columns:56px 1fr;grid-template-rows:auto auto}.step p{grid-column:2}}
+.step .n{font-family:var(--mono);font-size:15px;color:var(--teal-ink);font-weight:500}
+.step h3{font-size:clamp(20px,2vw,28px);font-weight:800;font-variation-settings:'wght' 800,'wdth' 102}
+.step p{font-size:16px;color:var(--ink-soft);line-height:1.6}
+.funnel-line{
+  margin-top:34px;font-family:var(--mono);font-size:clamp(13px,1.35vw,16px);
+  letter-spacing:.04em;color:var(--ink);
+  display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;
+}
+.funnel-line .arrow{color:var(--teal-ink)}
+.funnel-line .end{background:var(--teal);padding:2px 10px;font-weight:500}
+
+/* SELLER sidebar card */
+.seller-key{border:2px solid var(--ink);padding:22px;background:#FFFFFF;box-shadow:6px 6px 0 var(--teal)}
+.seller-key .kicker{margin-bottom:14px}
+.seller-key ul{list-style:none}
+.seller-key li{display:flex;gap:12px;align-items:baseline;padding:7px 0;border-bottom:1px dotted var(--rule);font-size:15px}
+.seller-key li:last-child{border-bottom:none}
+.seller-key .lt{font-family:var(--mono);font-weight:500;color:var(--teal-ink);font-size:16px;width:16px;flex:none}
+.seller-key p{margin-top:14px;font-family:var(--mono);font-size:12.5px;color:var(--pencil);line-height:1.6}
+
+/* ============================================================
+   CASE FILES
+   ============================================================ */
+.cases{border-top:3px solid var(--ink);padding-top:clamp(48px,7vh,80px);padding-bottom:clamp(56px,9vh,110px);background:var(--paper-deep)}
+.cases .kicker{margin-bottom:18px}
+.cases h2{font-size:clamp(32px,4.4vw,64px);font-weight:880;max-width:18ch}
+.filegrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,48px);margin-top:clamp(36px,5vh,56px)}
+@media (max-width:860px){.filegrid{grid-template-columns:1fr}}
+.casefile{background:#FFFFFF;border:1px solid var(--rule);border-top:4px solid var(--ink);padding:clamp(22px,2.6vw,36px)}
+.casefile .tag{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--pencil)}
+.casefile h3{font-size:clamp(22px,2.2vw,30px);font-weight:800;margin-top:8px}
+.casefile .role{font-size:15px;color:var(--ink-soft);margin-top:4px}
+.ftable{width:100%;border-collapse:collapse;margin-top:20px;font-feature-settings:"tnum"}
+.ftable td{padding:9px 0;border-bottom:1px dotted var(--rule);font-size:15px;color:var(--ink-soft)}
+.ftable td:last-child{text-align:right;font-family:var(--mono);font-weight:500;color:var(--ink)}
+.ftable tr:last-child td{border-bottom:none}
+.ftable .hero-row td{border-bottom:2px solid var(--teal)}
+.ftable .hero-row td:last-child{color:var(--teal-ink)}
+.casefile blockquote{margin-top:20px;font-size:15.5px;line-height:1.6;color:var(--ink-soft);border-left:3px solid var(--teal);padding-left:14px}
+.casefile figcaption{font-family:var(--mono);font-size:12.5px;color:var(--pencil);margin-top:8px;padding-left:17px}
+
+/* logos strip */
+.logoline{margin-top:clamp(40px,6vh,60px)}
+.logoline .kicker{justify-content:center}
+.logoline .kicker::before{display:none}
+.logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:clamp(28px,4.5vw,64px);margin-top:26px}
+.logos img{height:30px;width:auto;filter:brightness(0);opacity:.62;transition:opacity .25s ease}
+.logos img:hover{opacity:1}
+@media (max-width:640px){.logos img{height:24px}}
+
+/* ============================================================
+   PHOTO - the field desk
+   ============================================================ */
+.photo{position:relative}
+.photo img{width:100%;height:clamp(340px,68vh,640px);object-fit:cover;object-position:center 35%}
+.photo .newscap{
+  border-top:3px solid var(--ink);
+  padding:14px clamp(20px,5vw,72px) 18px;
+  max-width:1240px;margin:0 auto;
+  font-size:14px;line-height:1.6;color:var(--ink-soft);
+}
+.photo .newscap b{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);font-weight:500;margin-right:8px}
+
+/* ============================================================
+   WITNESSES - testimonials
+   ============================================================ */
+.witness{padding-top:clamp(56px,9vh,100px);padding-bottom:clamp(56px,9vh,100px)}
+.witness .kicker{margin-bottom:clamp(30px,5vh,48px)}
+.wgrid{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(28px,4vw,72px)}
+@media (max-width:860px){.wgrid{grid-template-columns:1fr}}
+.wq{border-top:1px solid var(--ink);padding-top:22px}
+.wq blockquote{
+  font-size:clamp(20px,2.1vw,29px);line-height:1.42;font-weight:560;
+  font-variation-settings:'wght' 560,'wdth' 98;letter-spacing:-0.01em;
+  max-width:30ch;
+}
+.wq blockquote .hl-static{background:linear-gradient(transparent 28%,rgba(48,200,200,.7) 28%,rgba(48,200,200,.7) 92%,transparent 92%)}
+.wq figcaption{font-family:var(--mono);font-size:13px;color:var(--pencil);margin-top:16px}
+.wq figcaption b{color:var(--ink);font-weight:500}
+.wq.small blockquote{font-size:clamp(17px,1.6vw,21px);font-weight:480}
+
+/* ============================================================
+   TWO PATHS
+   ============================================================ */
+.paths{border-top:3px solid var(--ink);padding-top:clamp(48px,7vh,80px);padding-bottom:clamp(56px,9vh,110px)}
+.paths h2{font-size:clamp(32px,4.4vw,64px);font-weight:880;max-width:20ch}
+.paths .kicker{margin-bottom:18px}
+.pathgrid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:clamp(36px,5vh,56px);border:2px solid var(--ink)}
+@media (max-width:860px){.pathgrid{grid-template-columns:1fr}}
+.path{padding:clamp(24px,3vw,44px)}
+.path:first-child{border-right:2px solid var(--ink)}
+@media (max-width:860px){.path:first-child{border-right:none;border-bottom:2px solid var(--ink)}}
+.path .tag{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-ink)}
+.path h3{font-size:clamp(24px,2.4vw,34px);font-weight:830;margin-top:10px;max-width:14ch}
+.path ul{list-style:none;margin-top:20px}
+.path li{padding:10px 0;border-bottom:1px dotted var(--rule);font-size:15.5px;color:var(--ink-soft);display:flex;gap:12px}
+.path li:last-child{border-bottom:none}
+.path li::before{content:"";width:7px;height:7px;background:var(--teal);flex:none;margin-top:8px}
+.path li strong{color:var(--ink);font-weight:650}
+
+/* ============================================================
+   FINAL CTA + FOOTER
+   ============================================================ */
+.finale{
+  background:var(--ink);color:var(--paper);
+  padding-top:clamp(64px,11vh,130px);padding-bottom:clamp(64px,11vh,130px);
+  position:relative;overflow:hidden;
+}
+.finale .kicker{color:rgba(247,247,242,.65)}
+.finale .kicker::before{background:var(--teal)}
+.finale h2{
+  font-size:clamp(38px,6.4vw,100px);font-weight:900;line-height:1;
+  margin-top:22px;max-width:14ch;letter-spacing:-0.02em;
+}
+.finale h2 .hl-dark{position:relative;z-index:0;display:inline-block}
+.finale h2 .hl-dark::before{
+  content:"";position:absolute;inset:.08em -.12em -.02em -.08em;z-index:-1;
+  background:var(--teal);border-radius:.5em .25em .6em .3em / .45em .6em .3em .55em;
+  transform:rotate(-1deg);
+}
+.finale h2 .hl-dark{color:var(--ink)}
+.finale .what{margin-top:30px;max-width:58ch;font-size:clamp(16px,1.5vw,19px);line-height:1.7;color:rgba(250,247,239,.85)}
+.finale .what strong{color:#FFFFFF;font-weight:650}
+.finale .cta-row{display:flex;flex-wrap:wrap;gap:22px;align-items:center;margin-top:38px}
+.finale .btn{background:var(--teal);color:var(--ink);border-color:var(--teal);box-shadow:4px 4px 0 rgba(250,247,239,.9)}
+.finale .btn:hover{box-shadow:7px 7px 0 rgba(250,247,239,.9)}
+.finale .phone{font-family:var(--mono);font-size:15px;color:rgba(250,247,239,.85)}
+.finale .phone a{color:#FFFFFF;text-decoration:none;border-bottom:2px solid var(--teal);font-weight:500}
+.finale .phone a:hover{color:var(--teal-ink)}
+.finale .phone small{display:block;font-size:12px;color:rgba(247,247,242,.6);margin-top:4px}
+
+footer{background:var(--ink);color:rgba(247,247,242,.75);border-top:1px solid rgba(247,247,242,.18)}
+footer .measure{
+  display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center;justify-content:space-between;
+  padding:30px 0;
+}
+footer .fwm{display:flex;align-items:center;gap:10px;color:#FFFFFF}
+footer .fwm img{width:30px;height:30px}
+footer .fwm span{font-weight:800;font-variation-settings:'wght' 800,'wdth' 112;text-transform:uppercase;letter-spacing:.02em;font-size:16px}
+footer .fmeta{font-family:var(--mono);font-size:12.5px;line-height:1.8}
+footer .fmeta a{color:#FFFFFF;text-decoration:none;border-bottom:1px solid var(--teal)}
+footer .colophon{font-family:var(--mono);font-size:11.5px;color:rgba(247,247,242,.5);letter-spacing:.04em}
+
+/* folio: running section marker (pass 3 upgrade) */
+.folio{
+  position:fixed;left:18px;bottom:16px;z-index:70;
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--pencil);
+  background:rgba(250,247,239,.85);padding:5px 10px;border-left:2px solid var(--teal);
+  pointer-events:none;
+  opacity:0;transition:opacity .4s ease;
+}
+html.js .folio.on{opacity:1}
+@media (max-width:900px){.folio{display:none}}
+
+/* reduced motion master collapse */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.001s !important;animation-duration:.001s !important}
+  html.js .fx{opacity:1;transform:none}
+  html.js .plate::before{content:none}
+  html.js .verdict .line{opacity:1;transform:none}
+  html.js .strike-word path{stroke-dashoffset:0}
+  html.js .hl::before{transform:scaleX(1) rotate(-1.2deg)}
+  html.js .hl::after{transform:scaleX(1) rotate(-.6deg)}
+  html.js .fail .fstrike path{stroke-dashoffset:0}
+  .breathe{font-variation-settings:'wght' 900,'wdth' 104}
+  .folio{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- shared SVG defs: the ink bleed filter -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="inkbleed" x="-20%" y="-60%" width="140%" height="220%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.026 0.31" numOctaves="3" seed="11" result="rough"/>
+      <feDisplacementMap in="SourceGraphic" in2="rough" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="folio" id="folio" aria-hidden="true">No. 01 &nbsp;/&nbsp; The verdict</div>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="masthead band">
+  <div class="measure">
+    <a class="wordmark" href="#top" aria-label="Sellers Hub, back to top">
+      <img src="../img/handdrawn-circle-logo-transparent.png" alt="Sellers Hub mark, a hand drawn circle around the letters SH">
+      <span class="wm">Sellers Hub</span>
+    </a>
+    <p class="dateline">A position on sales recruiting &nbsp;/&nbsp; set in ink and one highlighter</p>
+    <a class="btn" href="https://calendly.com/virginia-bowers/initial-meeting">Book a call
+      <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M8 1l5 5-5 5M13 6H1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO: THE VERDICT ============ -->
+<section class="hero band" id="hero" data-folio="No. 01 / The verdict">
+  <span class="regmark tl" aria-hidden="true"><svg viewBox="0 0 26 26"><circle cx="13" cy="13" r="8" fill="none" stroke="#1C1A14" stroke-width="1"/><path d="M13 0v26M0 13h26" stroke="#B3261E" stroke-width="1"/></svg></span>
+  <span class="regmark tr" aria-hidden="true"><svg viewBox="0 0 26 26"><circle cx="13" cy="13" r="8" fill="none" stroke="#1C1A14" stroke-width="1"/><path d="M13 0v26M0 13h26" stroke="#B3261E" stroke-width="1"/></svg></span>
+  <div class="measure">
+    <p class="kicker">The broadside &nbsp;/&nbsp; a position, not a pitch</p>
+    <h1 class="verdict">
+      <span class="line l1 plate" data-text="Stop interviewing resumes.">Stop interviewing <span class="strike-word">resumes<svg viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true"><path class="s1" pathLength="1" d="M6 36 C 48 28, 96 42, 148 34 S 252 26, 294 33"/><path class="s2" pathLength="1" d="M10 44 C 60 38, 120 48, 170 40 S 258 34, 290 41"/></svg></span>.</span>
+      <span class="line l2 plate" data-text="Start interviewing sellers.">Start interviewing <span class="hl">sellers</span>.</span>
+    </h1>
+    <div class="row" style="margin-top:0">
+      <div class="main">
+        <p class="deck">Sellers Hub is a partner led search firm for revenue teams in commercial insurance, manufacturing, and B2B tech. We map the whole market, score every candidate the same way, and hand you 3 to 5 finalists who can actually sell. What follows is our position. Read it, then argue with us on a call.</p>
+        <div class="cta-row">
+          <a class="btn" href="https://calendly.com/virginia-bowers/initial-meeting">Book a call
+            <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M8 1l5 5-5 5M13 6H1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn ghost" href="#record">Read the position</a>
+        </div>
+      </div>
+      <aside class="annot fx" aria-label="Margin note">
+        <span class="no">ed. note</span><br>
+        Set in ink navy and one teal highlighter. No stock handshakes were photographed for this page.
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROOF: THE RECORD ============ -->
+<section class="proof band" id="record" data-folio="No. 02 / The record">
+  <div class="measure">
+    <p class="kicker">The record, before the rhetoric</p>
+    <div class="statgrid">
+      <div class="stat fx">
+        <p class="big breathe">80<sup>%+</sup></p>
+        <p class="claim">of the professionals we place hit over 90% of their first year budget.</p>
+        <p class="annot"><span class="no">src.</span> first year budget attainment, tracked across Sellers Hub placements.</p>
+      </div>
+      <div class="stat fx fx-2">
+        <p class="big breathe">90<sup>%</sup></p>
+        <p class="claim">of clients returned for a second search in 2025.</p>
+        <p class="annot"><span class="no">src.</span> 2025 client retention, internal.</p>
+      </div>
+      <div class="stat fx fx-3">
+        <p class="big breathe">30<sup>+</sup></p>
+        <p class="claim">senior producers placed nationally for a top 20 insurance brokerage in the trailing 12 months.</p>
+        <p class="annot"><span class="no">src.</span> they name Sellers Hub their #1 recruitment partner.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE PILE: 200 vs 3 ============ -->
+<section class="pile-section" id="pile" data-folio="No. 03 / The pile">
+  <div class="pile-sticky" id="pileSticky">
+    <div class="pile-copy">
+      <p class="kicker">Exhibit A</p>
+      <h2 class="breathe">The resume pile is not a shortlist.</h2>
+      <p class="pile-counter"><span id="pileNum">200</span><span class="unit" id="pileUnit">resumes on your desk</span></p>
+      <figure class="pile-quotebox" id="pileQuote">
+        <blockquote>&#8220;Agencies used to send us many, many resumes and leave the qualifying to us. Sellers Hub actually does the work: <strong>you're looking through 2 or 3 candidates instead of 200.</strong>&#8221;</blockquote>
+        <figcaption>Mark Dittman, IBT Apps</figcaption>
+      </figure>
+    </div>
+    <div class="stack-stage" id="stackStage" aria-label="A stack of fourteen generic resumes is cleared away, leaving three scored finalists">
+      <p class="stamp" aria-hidden="true">Rejected</p>
+      <!-- 11 fling cards + 3 survivors, painted back to front -->
+      <!-- populated with genre-true resume boilerplate; names redacted, nobody invented -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAILURE MODES ============ -->
+<section class="fails band" id="fails" data-folio="No. 04 / The failure modes">
+  <div class="measure">
+    <p class="kicker">Three ways sales hiring goes wrong</p>
+    <p class="lede">Every revenue leader has lived at least one of these. Cross them out for good.</p>
+
+    <article class="fail" id="fail1">
+      <h3>They go dark.<svg class="fstrike" viewBox="0 0 400 80" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M8 46 C 70 36, 150 54, 230 42 S 350 34, 392 44"/></svg></h3>
+      <div class="fixrow">
+        <p class="fixtag">The fix</p>
+        <p class="fix">You will never chase us for an update. Every search runs with <strong>weekly update meetings and a live client portal</strong>, so you watch the market get mapped while it happens.</p>
+      </div>
+    </article>
+
+    <article class="fail" id="fail2">
+      <h3>The resume pile.<svg class="fstrike" viewBox="0 0 400 80" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M6 40 C 80 50, 160 32, 250 46 S 360 50, 394 38"/></svg></h3>
+      <div class="fixrow">
+        <p class="fixtag">The fix</p>
+        <p class="fix">Forwarding resumes is not recruiting. We run the <strong>SELLER assessment, a scored two step interview</strong>, and present 3 to 5 finalists. The qualifying is our job, not yours.</p>
+      </div>
+    </article>
+
+    <article class="fail" id="fail3">
+      <h3>Great on paper.<svg class="fstrike" viewBox="0 0 400 80" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M10 38 C 90 30, 170 52, 260 40 S 356 30, 392 42"/></svg></h3>
+      <div class="fixrow">
+        <p class="fixtag">The fix</p>
+        <p class="fix">Paper does not carry a quota. We interview for evidence of selling, which is why <strong>80%+ of the professionals we place hit over 90% of their first year budget</strong>.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ THE METHOD ============ -->
+<section class="method band" id="method" data-folio="No. 05 / The method">
+  <div class="measure">
+    <p class="kicker">The correction</p>
+    <h2 class="breathe">The method, typeset in five&nbsp;steps.</h2>
+    <div class="row">
+      <div class="main">
+        <div class="steps">
+          <div class="step fx"><span class="n">01</span><h3>Briefing</h3><p>A 45 to 60 minute alignment call. The seat, the territory, the comp, what a great first year looks like.</p></div>
+          <div class="step fx"><span class="n">02</span><h3>Market mapping</h3><p>The full landscape for the role, including the passive candidates who are not answering job ads.</p></div>
+          <div class="step fx"><span class="n">03</span><h3>Multi channel outreach</h3><p>We go to the market directly, on every channel it actually reads.</p></div>
+          <div class="step fx"><span class="n">04</span><h3>SELLER assessment</h3><p>A scored two step interview. Every candidate measured against the same six dimensions.</p></div>
+          <div class="step fx"><span class="n">05</span><h3>Shortlist to signed offer</h3><p>3 to 5 finalists, interviews coordinated through to a signed offer. Weekly update meetings with a live client portal throughout.</p></div>
+        </div>
+        <p class="funnel-line fx">100+ mapped <span class="arrow">&rarr;</span> screened and scored down <span class="arrow">&rarr;</span> 3 to 5 finalists <span class="arrow">&rarr;</span> <span class="end">1 performing hire</span></p>
+      </div>
+      <aside class="seller-key fx" aria-label="What SELLER stands for">
+        <p class="kicker">The scorecard</p>
+        <ul>
+          <li><span class="lt">S</span> Sales performance</li>
+          <li><span class="lt">E</span> Expertise</li>
+          <li><span class="lt">L</span> Learning agility</li>
+          <li><span class="lt">L</span> Likability</li>
+          <li><span class="lt">E</span> Execution and grit</li>
+          <li><span class="lt">R</span> Role fit</li>
+        </ul>
+        <p>Six dimensions, one rubric, every candidate. That is what makes 3 finalists worth more than 200 resumes.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASE FILES ============ -->
+<section class="cases band" id="cases" data-folio="No. 06 / The search files">
+  <div class="measure">
+    <p class="kicker">Evidence</p>
+    <h2 class="breathe">Two search files, opened.</h2>
+    <div class="filegrid">
+      <article class="casefile fx">
+        <p class="tag">Search file / core banking SaaS</p>
+        <h3>IBT Apps</h3>
+        <p class="role">Enterprise sales hire</p>
+        <table class="ftable">
+          <tr><td>Candidates evaluated</td><td>123</td></tr>
+          <tr><td>Screened</td><td>32</td></tr>
+          <tr><td>Presented</td><td>3</td></tr>
+          <tr class="hero-row"><td>Hired, offer accepted</td><td>1 of 1</td></tr>
+          <tr><td>Days to fill</td><td>41</td></tr>
+        </table>
+      </article>
+      <article class="casefile fx fx-2">
+        <p class="tag">Search file / logistics tech</p>
+        <h3>BlueCargo.ai</h3>
+        <p class="role">Solutions Architect</p>
+        <table class="ftable">
+          <tr><td>Candidates evaluated</td><td>402</td></tr>
+          <tr><td>Screened</td><td>80</td></tr>
+          <tr><td>Presented</td><td>16</td></tr>
+          <tr class="hero-row"><td>Hired, offer accepted</td><td>1 of 1</td></tr>
+          <tr><td>Weeks to fill</td><td>12</td></tr>
+        </table>
+        <figure>
+          <blockquote>&#8220;They understood the unique intersection of logistics expertise and technical enterprise sales required for this role.&#8221;</blockquote>
+          <figcaption>BlueCargo.ai leadership</figcaption>
+        </figure>
+      </article>
+    </div>
+    <div class="logoline fx">
+      <p class="kicker">Searches run for</p>
+      <div class="logos">
+        <img src="../img/logos/bystronic.svg" alt="Bystronic logo">
+        <img src="../img/logos/rocket.png" alt="Rocket logo">
+        <img src="../img/logos/bluecargo.svg" alt="BlueCargo logo">
+        <img src="../img/logos/paxiom.png" alt="Paxiom logo">
+        <img src="../img/logos/horn.svg" alt="Horn logo">
+        <img src="../img/logos/novahavens.png" alt="Nova Havens logo">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHOTO ============ -->
+<figure class="photo" data-folio="No. 07 / The field desk">
+  <img src="../img/cancun-team-full.jpg" alt="The Sellers Hub team in matching branded shirts on a boat off Cancun" loading="lazy">
+  <figcaption class="newscap"><b>The field desk</b> The Sellers Hub team off Cancun. The firm recruits for commercial insurance, manufacturing, and B2B tech, and roughly 19.7k sales leaders follow its work on LinkedIn. Photo: company archive.</figcaption>
+</figure>
+
+<!-- ============ WITNESSES ============ -->
+<section class="witness band" id="witness" data-folio="No. 08 / The witnesses">
+  <div class="measure">
+    <p class="kicker">Entered into the record</p>
+    <div class="wgrid">
+      <figure class="wq fx">
+        <blockquote>&#8220;We've placed 11 people together across two vastly different industries. The last two hires have been here for two and a half years, and <span class="hl-static">one of them is number three in the company</span>.&#8221;</blockquote>
+        <figcaption><b>Nick Hoggan</b> &nbsp;/&nbsp; VP of Sales, Adlumin</figcaption>
+      </figure>
+      <figure class="wq small fx fx-2">
+        <blockquote>&#8220;Individualized attention and consistently high-quality results.&#8221;</blockquote>
+        <figcaption><b>Senior Director</b> &nbsp;/&nbsp; top 20 national insurance brokerage</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TWO PATHS ============ -->
+<section class="paths band" id="paths" data-folio="No. 09 / Two engagements">
+  <div class="measure">
+    <p class="kicker">Two ways to engage</p>
+    <h2 class="breathe">Same rubric. Two markets.</h2>
+    <div class="pathgrid">
+      <article class="path fx">
+        <p class="tag">Path one / domestic</p>
+        <h3>US Sales Headhunting</h3>
+        <ul>
+          <li><span><strong>Partner led committed search</strong>, producers to VP level.</span></li>
+          <li><span>Typical search runs <strong>4 to 6 weeks</strong>.</span></li>
+          <li><span>Replacement guarantee <strong>up to two years</strong>. Under 5% of placements ever need it.</span></li>
+          <li><span>Commercial insurance, manufacturing, B2B tech and SaaS.</span></li>
+        </ul>
+      </article>
+      <article class="path fx fx-2">
+        <p class="tag">Path two / global</p>
+        <h3>Global Talent Solutions</h3>
+        <ul>
+          <li><span>Offshore <strong>SDRs, BDRs, AEs</strong>, account managers, customer success, RevOps.</span></li>
+          <li><span><strong>60 to 80% cost savings</strong> vs comparable US hires.</span></li>
+          <li><span>Typically placed in <strong>under 4 weeks</strong>.</span></li>
+          <li><span>Direct hire or subscription, with 6 month replacement coverage.</span></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINALE ============ -->
+<section class="finale band" id="finale" data-folio="No. 10 / The call">
+  <div class="measure">
+    <p class="kicker">The closing argument</p>
+    <h2>The last page of this argument is a <span class="hl-dark">phone call</span>.</h2>
+    <p class="what">Here is exactly what happens: a <strong>45 to 60 minute briefing call</strong> about the seat you need to fill, the market for it, and whether a committed search fits. No deck, no retainer talk before we understand the role. If we are not the right firm for the search, we will tell you on the call.</p>
+    <div class="cta-row">
+      <a class="btn" href="https://calendly.com/virginia-bowers/initial-meeting">Book a call
+        <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M8 1l5 5-5 5M13 6H1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <p class="phone">Prefer the phone? <a href="tel:18556735537">1-855-6-SELLERS</a><small>answered within 24 hours</small></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="band">
+  <div class="measure">
+    <p class="fwm">
+      <img src="../img/sellershub-logo-white.png" alt="Sellers Hub mark in white">
+      <span>Sellers Hub</span>
+    </p>
+    <p class="fmeta">
+      Commercial insurance / Manufacturing / B2B tech and SaaS<br>
+      <a href="tel:18556735537">1-855-6-SELLERS</a> &nbsp;answered within 24 hours
+    </p>
+    <p class="colophon">Composed in Archivo. Marginalia in Spline Sans Mono.<br>Printed in navy and one teal highlighter.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- HERO SEQUENCE: register -> strike -> sweep ---------- */
+  var hero = document.getElementById("hero");
+  function runHero(){
+    if(reduced){ hero.classList.add("registered","struck","swept"); return; }
+    requestAnimationFrame(function(){
+      setTimeout(function(){ hero.classList.add("registered"); }, 250);   /* plates snap in */
+      setTimeout(function(){ hero.classList.add("struck"); }, 1150);      /* strike draws  */
+      setTimeout(function(){ hero.classList.add("swept"); }, 1750);       /* marker sweeps */
+    });
+  }
+  if(document.readyState === "complete"){ runHero(); }
+  else { window.addEventListener("load", runHero, {once:true}); }
+
+  /* ---------- BUILD THE RESUME STACK ---------- */
+  var stage = document.getElementById("stackStage");
+  var titles = ["Account Executive","Senior Sales Manager","Regional Sales Director","Business Development Rep","Enterprise AE","Territory Manager","Sales Consultant","Inside Sales Rep","Producer, Commercial Lines","Sales Engineer","Director of Sales"];
+  var lines = [
+    ["Results driven professional with a proven track record","Responsible for driving revenue growth","Proficient in Microsoft Office"],
+    ["Dynamic self starter and team player","Managed key accounts and strategic initiatives","Excellent communication skills"],
+    ["Passionate about building relationships","Leveraged synergies across cross functional teams","Detail oriented multitasker"],
+    ["Exceeded expectations in a fast paced environment","Strong interpersonal and organizational skills","References available upon request"]
+  ];
+  var flingClasses = ["t1","t2","t3","t4","t5","t6"];
+  var cards = [];
+
+  function makeFront(i){
+    var f = document.createElement("div");
+    f.className = "rface";
+    var set = lines[i % lines.length];
+    f.innerHTML =
+      '<div class="rname'+(i%3===1?" w2":"")+'"></div>' +
+      '<p class="rtitle">'+titles[i % titles.length]+'</p>' +
+      '<p class="rline">'+set[0]+'</p>' +
+      '<p class="rline">'+set[1]+'</p>' +
+      '<p class="rline">'+set[2]+'</p>' +
+      '<div class="rmeta"><span>Resume</span><span>pg 1 of 4</span></div>';
+    return f;
+  }
+  function makeBack(n){
+    var b = document.createElement("div");
+    b.className = "rface back";
+    b.innerHTML =
+      '<p class="scorehead">SELLER assessment</p>' +
+      '<p class="scoretitle">Finalist '+n+'</p>' +
+      '<div class="seller-rows">' +
+        ["S|Sales performance","E|Expertise","L|Learning agility","L|Likability","E|Execution and grit","R|Role fit"].map(function(d){
+          var p = d.split("|");
+          return '<div class="sr"><span class="lt">'+p[0]+'</span><span>'+p[1]+'</span>' +
+            '<svg width="13" height="11" viewBox="0 0 13 11" fill="none" aria-hidden="true"><path d="M1 6l3.5 3.5L12 1" stroke="#0E7B7B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>';
+        }).join("") +
+      '</div>' +
+      '<p class="scorefoot">Scored two step interview</p>';
+    return b;
+  }
+
+  var N = 14, SURVIVORS = 3;
+  for(var i = 0; i < N; i++){
+    var card = document.createElement("div");
+    card.className = "rcard";
+    var isSurvivor = i >= N - SURVIVORS;      /* last painted = top of stack */
+    /* messy but believable stack offsets */
+    var r = ((i * 137) % 17) - 8;             /* -8..8 deg */
+    var x = ((i * 53) % 26) - 13;             /* px */
+    var y = ((i * 89) % 22) - 11 - i * 2;     /* px, slight climb */
+    if(isSurvivor){
+      var s = i - (N - SURVIVORS);
+      r = [-7, 5, -1][s];
+      x = [-72, 66, -4][s];
+      y = [26, 12, -6][s];
+    }
+    card.style.setProperty("--r", r + "deg");
+    card.style.setProperty("--x", x + "px");
+    card.style.setProperty("--y", y + "px");
+    card.style.zIndex = i + 1;
+
+    var inner = document.createElement("div");
+    inner.className = "rcard-inner";
+    inner.appendChild(makeFront(i));
+    if(isSurvivor){
+      inner.appendChild(makeBack(i - (N - SURVIVORS) + 1));
+      card.classList.add("rm-keep");
+    } else {
+      card.classList.add(flingClasses[i % flingClasses.length]);
+      card.classList.add("rm-hide");
+    }
+    card.appendChild(inner);
+    stage.appendChild(card);
+    cards.push({el:card, survivor:isSurvivor, idx:i});
+  }
+
+  /* fling order: top of the non-survivor stack goes first */
+  var flingers = cards.filter(function(c){ return !c.survivor; }).reverse();
+  var STAMP_AT = 0.06, FLING_START = 0.14, FLING_END = 0.68, FLIP_AT = 0.8;
+
+  var sticky = document.getElementById("pileSticky");
+  var section = document.getElementById("pile");
+  var numEl = document.getElementById("pileNum");
+  var unitEl = document.getElementById("pileUnit");
+
+  function setPile(p){
+    /* stamp thumps on, then the pile clears */
+    stage.classList.toggle("stamped", p >= STAMP_AT && p < FLING_END);
+    stage.classList.toggle("cleared", p >= FLING_END);
+    flingers.forEach(function(c, j){
+      var t = FLING_START + (FLING_END - FLING_START) * (j / (flingers.length - 1));
+      c.el.classList.toggle("flung", p >= t);
+    });
+    var flip = p >= FLIP_AT;
+    cards.forEach(function(c){ if(c.survivor){ c.el.classList.toggle("flip", flip); } });
+    sticky.classList.toggle("survivors", flip);
+    /* counter: 200 -> 3 across the clearing */
+    var k = Math.min(1, Math.max(0, (p - FLING_START) / (FLING_END - FLING_START)));
+    var eased = 1 - Math.pow(1 - k, 3);
+    var val = Math.round(200 - eased * 197);
+    numEl.textContent = String(val);
+    unitEl.textContent = val > 5 ? "resumes on your desk" : "candidates worth your hour";
+  }
+
+  if(reduced){
+    /* static end state */
+    numEl.textContent = "3";
+    unitEl.textContent = "candidates worth your hour";
+    cards.forEach(function(c){ if(c.survivor){ c.el.classList.add("flip"); } });
+    sticky.classList.add("survivors");
+  } else {
+    var running = false, rafId = null;
+    function tick(){
+      if(!running) return;
+      var rect = section.getBoundingClientRect();
+      var vh = window.innerHeight;
+      var total = rect.height - vh;
+      var p = total > 0 ? Math.min(1, Math.max(0, -rect.top / total)) : 0;
+      setPile(p);
+      rafId = requestAnimationFrame(tick);
+    }
+    var pileIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting && !running){ running = true; rafId = requestAnimationFrame(tick); }
+        else if(!e.isIntersecting && running){ running = false; cancelAnimationFrame(rafId); }
+      });
+    }, {rootMargin:"10% 0px"});
+    pileIO.observe(section);
+  }
+
+  /* ---------- SCROLL-ENTER REVEALS (fx, breathe, fail strikes) ---------- */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add("inview"); io.unobserve(e.target); }
+    });
+  }, {threshold:0.25, rootMargin:"0px 0px -8% 0px"});
+  document.querySelectorAll(".fx, .breathe, .fail").forEach(function(el){ io.observe(el); });
+
+  /* ---------- FOLIO: running section marker ---------- */
+  var folio = document.getElementById("folio");
+  if(folio && !reduced){
+    var folioIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          folio.textContent = e.target.getAttribute("data-folio").replace("/", " / ");
+          folio.classList.add("on");
+        }
+      });
+    }, {rootMargin:"-40% 0px -40% 0px"});
+    document.querySelectorAll("[data-folio]").forEach(function(s){ folioIO.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>

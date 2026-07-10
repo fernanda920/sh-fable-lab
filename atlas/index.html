@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Sellers Hub | The Whole Talent Map, One Search Partner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --space:#101736; --space-deep:#0B1129; --navy:#1B2856;
+  --teal:#30C8C8; --teal-dim:rgba(48,200,200,.5);
+  --paper:#F7F8FC; --ink:#1B2856; --body-c:#4C5678; --faint-l:#8B93B3;
+  --white:#F2F5FF; --dim:rgba(242,245,255,.62); --faint:rgba(242,245,255,.36);
+  --line-d:rgba(242,245,255,.1); --line-l:rgba(27,40,86,.12);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter Tight',sans-serif;background:var(--space-deep);color:var(--white);font-size:16.5px;line-height:1.64;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+.mono{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.015em}
+
+/* ---------- NAV ---------- */
+.nav{position:sticky;top:0;z-index:60;background:rgba(11,17,41,.75);backdrop-filter:blur(16px);border-bottom:1px solid var(--line-d)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:11px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:18px;color:#fff}
+.brand img{height:36px}
+.nav-links{display:flex;gap:30px;font-size:14.5px;font-weight:500;color:var(--dim)}
+.nav-links a:hover{color:var(--teal)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#06222c;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:15.5px;padding:14px 28px;border-radius:10px;border:0;transition:transform .25s var(--ease),box-shadow .25s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(48,200,200,.35)}
+.btn:active{transform:scale(.98)}
+.btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.btn-line{background:transparent;color:var(--white);border:1px solid rgba(242,245,255,.25);font-weight:500}
+.btn-line:hover{border-color:var(--teal);color:var(--teal);box-shadow:none}
+
+/* ---------- GLOBE HERO ---------- */
+.hero{position:relative;min-height:100vh;overflow:hidden;display:flex;flex-direction:column}
+#globe{position:absolute;inset:0;width:100%;height:100%}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(1200px 800px at 50% 120%, rgba(48,200,200,.06), transparent 60%)}
+.hero-content{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:44px;pointer-events:none}
+.hero-content .wrap{pointer-events:none}
+.hero-top{position:relative;z-index:2;padding-top:56px;pointer-events:none}
+.hero-top h1{font-size:clamp(36px,4.6vw,60px);font-weight:800;line-height:1.03;max-width:17ch;text-shadow:0 2px 30px rgba(11,17,41,.9),0 1px 3px rgba(11,17,41,.8)}
+.hero-top p{margin-top:16px;font-size:18px;color:var(--dim);max-width:46ch;text-shadow:0 1px 12px rgba(11,17,41,.9)}
+.mode-row{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap;pointer-events:auto}
+.mode{display:flex;flex-direction:column;align-items:flex-start;gap:4px;background:rgba(16,23,54,.72);backdrop-filter:blur(10px);border:1.5px solid var(--line-d);color:var(--white);border-radius:12px;padding:16px 22px;min-width:230px;text-align:left;transition:border-color .3s,background .3s,transform .25s var(--ease)}
+.mode:hover{transform:translateY(-2px)}
+.mode b{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:17px}
+.mode span{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--dim)}
+.mode.active{border-color:var(--teal);background:rgba(48,200,200,.1)}
+.mode.active span{color:var(--teal)}
+.mode:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.hero-foot{position:relative;z-index:2}
+.hero-foot .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;padding-bottom:26px;pointer-events:none}
+.hero-foot .cta-cluster{display:flex;gap:14px;align-items:center;pointer-events:auto}
+.hero-foot .coord{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:var(--faint)}
+
+/* ---------- LIGHT BAND ---------- */
+.band-light{background:var(--paper);color:var(--ink)}
+.band-light section{padding:100px 0}
+.panel-head{max-width:660px;margin-bottom:48px}
+.panel-head h2{font-size:clamp(28px,3.4vw,42px);font-weight:800;line-height:1.08}
+.panel-head p{margin-top:14px;color:var(--body-c);font-size:17px}
+
+/* path panels */
+.pathgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
+.p-copy h3{font-size:clamp(24px,2.8vw,34px);font-weight:800;line-height:1.1}
+.p-copy>p{margin-top:12px;color:var(--body-c);font-size:16.5px;max-width:54ch}
+.p-points{margin-top:30px;display:flex;flex-direction:column;gap:16px}
+.p-point{display:flex;gap:15px}
+.p-point svg{flex:none;margin-top:4px}
+.p-point b{display:block;font-size:16px;font-weight:600}
+.p-point span{font-size:14.5px;color:var(--body-c)}
+.p-cta{margin-top:34px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.p-cta small{font-size:14px;color:var(--faint-l)}
+.proofcard{background:var(--navy);color:#fff;border-radius:14px;padding:38px 36px}
+.proofcard .nums{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding-bottom:26px;margin-bottom:26px;border-bottom:1px solid rgba(255,255,255,.14)}
+.proofcard .nums b{display:block;font-family:'IBM Plex Mono',monospace;font-size:34px;font-weight:500;color:var(--teal);line-height:1}
+.proofcard .nums span{display:block;margin-top:8px;font-size:13.5px;color:rgba(255,255,255,.66);line-height:1.5}
+.proofcard blockquote{font-size:17px;font-weight:500;line-height:1.6}
+.proofcard footer{margin-top:16px;font-size:13.5px;color:rgba(255,255,255,.6)}
+.proofcard footer b{display:block;color:#fff;font-size:14.5px;font-weight:600}
+.panel{display:none}
+.panel.show{display:block;animation:fadeUp .5s var(--ease)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.panel.show{animation:none}}
+.swap-tabs{display:inline-flex;gap:0;border:1.5px solid var(--line-l);border-radius:10px;overflow:hidden;margin-bottom:44px}
+.swap-tabs button{padding:12px 26px;background:#fff;border:0;font-weight:600;font-size:15px;color:var(--body-c);font-family:'Bricolage Grotesque',sans-serif}
+.swap-tabs button.active{background:var(--navy);color:#fff}
+.swap-tabs button:focus-visible{outline:2px solid var(--teal);outline-offset:-2px}
+
+/* funnel journey */
+.journey{border-top:1px solid var(--line-l)}
+.j-track{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:54px}
+.j-track::before{content:"";position:absolute;top:10px;left:4%;right:4%;height:2px;background:linear-gradient(90deg,var(--teal),var(--navy))}
+.j-item{padding:0 22px 0 0;position:relative}
+.j-item i{position:relative;z-index:1;display:block;width:22px;height:22px;border-radius:50%;background:var(--paper);border:2.5px solid var(--teal);margin-bottom:18px;font-style:normal}
+.j-item b{display:block;font-family:'IBM Plex Mono',monospace;font-size:30px;font-weight:500;color:var(--ink);line-height:1}
+.j-item h4{font-size:15.5px;font-weight:600;margin-top:8px;font-family:'Inter Tight',sans-serif}
+.j-item p{font-size:13.5px;color:var(--body-c);margin-top:4px}
+.j-src{margin-top:36px;font-size:13.5px;color:var(--faint-l)}
+
+/* savings meter */
+.meter-row{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.meter-viz{background:#fff;border:1px solid var(--line-l);border-radius:14px;padding:40px}
+.m-bar{margin-bottom:26px}
+.m-bar:last-child{margin-bottom:0}
+.m-bar .lbl{display:flex;justify-content:space-between;font-size:14px;margin-bottom:10px}
+.m-bar .lbl span{color:var(--body-c)}
+.m-bar .lbl b{font-family:'IBM Plex Mono',monospace;font-weight:500}
+.m-bar .rail{height:34px;border-radius:8px;background:rgba(27,40,86,.07);overflow:hidden}
+.m-bar .fill{height:100%;border-radius:8px;width:0;transition:width 1.4s var(--ease)}
+.m-us .fill{background:var(--navy);}
+.m-gl .fill{background:var(--teal)}
+.m-note{margin-top:18px;font-size:13px;color:var(--faint-l)}
+.meter-copy h2{font-size:clamp(26px,3vw,38px);font-weight:800;line-height:1.1}
+.meter-copy p{margin-top:14px;color:var(--body-c);max-width:50ch}
+.meter-copy .big{font-family:'IBM Plex Mono',monospace;color:var(--ink);font-size:15px;margin-top:22px}
+
+/* quotes light */
+.quotes{border-top:1px solid var(--line-l)}
+.q-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:20px}
+.q-col{display:flex;flex-direction:column;gap:20px}
+.q-card{background:#fff;border:1px solid var(--line-l);border-radius:14px;padding:34px}
+.q-card.dark{background:var(--navy);color:#fff;border:0}
+.q-card blockquote{font-size:18px;font-weight:500;line-height:1.55}
+.q-card.dark blockquote{font-size:21px;font-family:'Bricolage Grotesque',sans-serif}
+.q-card footer{margin-top:20px;font-size:13.5px;color:var(--faint-l)}
+.q-card.dark footer{color:rgba(255,255,255,.6)}
+.q-card footer b{display:block;color:var(--ink);font-size:14.5px;font-weight:600}
+.q-card.dark footer b{color:var(--teal)}
+.logo-row{display:flex;align-items:center;gap:36px;flex-wrap:wrap;margin-top:44px;padding-top:32px;border-top:1px solid var(--line-l)}
+.logo-row span{font-size:13px;color:var(--faint-l);font-weight:500}
+.logo-row img{height:23px;opacity:.5;filter:grayscale(1) brightness(.35);transition:opacity .25s}
+.logo-row img:hover{opacity:.9}
+
+/* ---------- DARK CLOSE ---------- */
+.close{position:relative;background:var(--space-deep);overflow:hidden;padding:130px 0}
+#globe2{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+.close-in{position:relative;z-index:2;max-width:760px}
+.close h2{font-size:clamp(32px,4.2vw,54px);font-weight:800;line-height:1.05;text-shadow:0 2px 30px rgba(11,17,41,.9)}
+.close p{margin:20px 0 34px;color:var(--dim);font-size:18px;max-width:46ch;text-shadow:0 1px 12px rgba(11,17,41,.8)}
+.close-row{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.close-row small{font-size:14px;color:var(--faint)}
+.close-list{margin-top:44px;display:flex;gap:36px;flex-wrap:wrap}
+.close-list div{font-size:14.5px;color:var(--dim);display:flex;gap:10px;align-items:center}
+.close-list svg{flex:none}
+
+/* ---------- FOOTER ---------- */
+.footer{border-top:1px solid var(--line-d);padding:44px 0 38px;background:var(--space-deep)}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:26px;flex-wrap:wrap}
+.foot-in .brand{font-size:16px}
+.foot-in .brand img{height:30px}
+.foot-links{display:flex;gap:26px;font-size:14px;color:var(--dim);flex-wrap:wrap}
+.foot-links a:hover{color:var(--teal)}
+.foot-legal{margin-top:22px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--faint)}
+
+/* ---------- REVEAL ---------- */
+html.js .rv{opacity:0;transform:translateY(26px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+html.js .rv.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html.js .rv{opacity:1;transform:none;transition:none}}
+
+/* ---------- MOBILE ---------- */
+@media(max-width:960px){
+  .pathgrid,.meter-row,.q-grid{grid-template-columns:1fr}
+  .j-track{grid-template-columns:1fr 1fr;gap:34px}
+  .j-track::before{display:none}
+  .nav-links{display:none}
+  .band-light section{padding:64px 0}
+  .hero-top{padding-top:40px}
+}
+@media(max-width:560px){
+  .j-track{grid-template-columns:1fr}
+  .mode{min-width:100%}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="brand"><img src="../img/sellershub-logo-white.png" alt="Sellers Hub logo">Sellers Hub</a>
+    <div class="nav-links">
+      <a href="#paths">The two paths</a>
+      <a href="#journey">The method</a>
+      <a href="#proof">Proof</a>
+    </div>
+    <a class="btn" href="https://calendly.com/virginia-bowers/initial-meeting">Book a call</a>
+  </div>
+</nav>
+
+<header class="hero" id="hero">
+  <canvas id="globe" aria-hidden="true"></canvas>
+  <div class="hero-top">
+    <div class="wrap">
+      <h1>We see the whole talent map. Pick where to hunt.</h1>
+      <p>Sellers Hub headhunts top US sales talent and builds vetted global teams. Same method, one partner, the entire planet.</p>
+      <div class="mode-row">
+        <button class="mode active" data-mode="us" aria-pressed="true"><b>Hire in the US</b><span>PRODUCERS TO VP / 4 TO 6 WEEKS</span></button>
+        <button class="mode" data-mode="global" aria-pressed="false"><b>Scale globally</b><span>60 TO 80% BELOW US COST</span></button>
+      </div>
+    </div>
+  </div>
+  <div class="hero-content"></div>
+  <div class="hero-foot">
+    <div class="wrap">
+      <div class="cta-cluster">
+        <a class="btn" href="https://calendly.com/virginia-bowers/initial-meeting">Book a call</a>
+        <a class="btn btn-line" href="#paths">Explore the paths</a>
+      </div>
+      <span class="coord" id="coord">27.9506 N, 82.4572 W / SELLERS HUB HQ</span>
+    </div>
+  </div>
+</header>
+
+<div class="band-light">
+
+  <section id="paths">
+    <div class="wrap">
+      <div class="swap-tabs" role="tablist">
+        <button id="tab-us" class="active" role="tab" aria-selected="true">US Sales Headhunting</button>
+        <button id="tab-global" role="tab" aria-selected="false">Global Talent Solutions</button>
+      </div>
+
+      <div class="panel show" id="panel-us">
+        <div class="pathgrid">
+          <div class="p-copy">
+            <h3>The producer you need is employed, hitting quota, and not reading job boards.</h3>
+            <p>We map everyone selling in your market, approach them directly, and put only scored finalists on your calendar. Partner-led, committed search.</p>
+            <div class="p-points">
+              <div class="p-point"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#1D9F9F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><div><b>4 to 6 weeks, briefing to signed offer</b><span>Weekly update meetings and a live portal the whole way.</span></div></div>
+              <div class="p-point"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#1D9F9F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><div><b>Replacement guarantee up to two years</b><span>Under 5% of our placements ever need it.</span></div></div>
+              <div class="p-point"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#1D9F9F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><div><b>Home turf: insurance, manufacturing, B2B tech</b><span>Producers, account executives, and sales leadership.</span></div></div>
+            </div>
+            <div class="p-cta">
+              <a class="btn" href="https://calendly.com/virginia-bowers/initial-meeting">Book a call</a>
+              <small>30 minutes. You leave with a market read on your seat.</small>
+            </div>
+          </div>
+          <aside class="proofcard">
+            <div class="nums">
+              <div><b>30+</b><span>senior producers placed for one top-20 brokerage in 12 months</span></div>
+              <div><b>80%+</b><span>of placements hit over 90% of first-year budget</span></div>
+            </div>
+            <blockquote>"We've placed 11 people together across two vastly different industries. One of the last two hires is now number three in the company."</blockquote>
+            <footer><b>Nick Hoggan</b>VP of Sales, Adlumin</footer>
+          </aside>
+        </div>
+      </div>
+
+      <div class="panel" id="panel-global">
+        <div class="pathgrid">
+          <div class="p-copy">
+            <h3>The same revenue coverage at a fraction of the payroll.</h3>
+            <p>Offshore SDRs, BDRs, AEs, account managers, customer success, and RevOps, sourced worldwide and vetted to the same SELLER bar as our US placements.</p>
+            <div class="p-points">
+              <div class="p-point"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#1D9F9F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><div><b>60 to 80% below comparable US cost</b><span>Senior, English-fluent operators who plug into your stack.</span></div></div>
+              <div class="p-point"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#1D9F9F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><div><b>Placed in under 4 weeks, typically</b><span>An empty SDR seat costs pipeline every single day.</span></div></div>
+              <div class="p-point"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#1D9F9F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><div><b>Direct hire or subscription</b><span>Six months of replacement coverage either way.</span></div></div>
+            </div>
+            <div class="p-cta">
+              <a class="btn" href="https://calendly.com/virginia-bowers/initial-meeting">Book a call</a>
+              <small>We will scope roles, cost, and timeline honestly.</small>
+            </div>
+          </div>
+          <aside class="proofcard">
+            <div class="nums">
+              <div><b>&lt;4 wks</b><span>typical time from briefing to a placed global hire</span></div>
+              <div><b>90%</b><span>of clients returned for a second search in 2025</span></div>
+            </div>
+            <blockquote>"Sellers Hub actually does the work. You're looking through 2 or 3 candidates instead of 200."</blockquote>
+            <footer><b>Mark Dittman</b>IBT Apps</footer>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="journey" id="journey">
+    <div class="wrap">
+      <div class="panel-head rv">
+        <h2>One search, told as a journey.</h2>
+        <p>These are the actual numbers from a senior enterprise AE search for IBT Apps. Forty one days, briefing to signed offer.</p>
+      </div>
+      <div class="j-track">
+        <div class="j-item rv"><i></i><b class="jnum" data-n="123">0</b><h4>Candidates evaluated</h4><p>The full market map, including passive candidates.</p></div>
+        <div class="j-item rv"><i></i><b class="jnum" data-n="32">0</b><h4>Screened and scored</h4><p>Two-step SELLER assessment on every serious profile.</p></div>
+        <div class="j-item rv"><i></i><b class="jnum" data-n="3">0</b><h4>Finalists presented</h4><p>Full scorecards. Every one worth interview time.</p></div>
+        <div class="j-item rv"><i></i><b class="jnum" data-n="1">0</b><h4>Performing hire</h4><p>Offer accepted. 100% accept rate on this search.</p></div>
+      </div>
+      <p class="j-src rv">SELLER scores Sales performance, Expertise, Learning agility, Likability, Execution and grit, and Role fit.</p>
+    </div>
+  </section>
+
+  <section class="metering">
+    <div class="wrap meter-row">
+      <div class="meter-copy rv">
+        <h2>What the global path does to the payroll line.</h2>
+        <p>Same seat, same SELLER bar, sourced where senior talent costs less. Clients typically save 60 to 80% against a comparable US hire.</p>
+        <p class="big">Direct hire or monthly subscription. 6-month coverage.</p>
+      </div>
+      <div class="meter-viz rv" id="meter">
+        <div class="m-bar m-us">
+          <div class="lbl"><span>Comparable US hire</span><b>100%</b></div>
+          <div class="rail"><div class="fill" data-w="100%"></div></div>
+        </div>
+        <div class="m-bar m-gl">
+          <div class="lbl"><span>Global hire, same seat</span><b>20 to 40%</b></div>
+          <div class="rail"><div class="fill" data-w="32%"></div></div>
+        </div>
+        <div class="m-note">Illustrative of the 60 to 80% savings range our global placements deliver.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quotes" id="proof">
+    <div class="wrap">
+      <div class="panel-head rv">
+        <h2>Clients keep coming back. 90% did in 2025.</h2>
+      </div>
+      <div class="q-grid">
+        <div class="q-col">
+          <div class="q-card dark rv">
+            <blockquote>"We've placed 11 people together across two vastly different industries. The last two hires have been here for two and a half years, and one of them is number three in the company."</blockquote>
+            <footer><b>Nick Hoggan</b>VP of Sales, Adlumin</footer>
+          </div>
+          <div class="q-card rv">
+            <blockquote>"They understood the unique intersection of logistics expertise and technical enterprise sales this role required."</blockquote>
+            <footer><b>Leadership team</b>BlueCargo.ai</footer>
+          </div>
+        </div>
+        <div class="q-col">
+          <div class="q-card rv">
+            <blockquote>"Agencies used to send us many, many resumes and leave the qualifying to us. Sellers Hub actually does the work."</blockquote>
+            <footer><b>Mark Dittman</b>IBT Apps</footer>
+          </div>
+          <div class="q-card rv">
+            <blockquote>"Individualized attention and consistently high-quality results."</blockquote>
+            <footer><b>Senior Director</b>Top-20 national insurance brokerage</footer>
+          </div>
+        </div>
+      </div>
+      <div class="logo-row rv">
+        <span>Revenue teams we hire for</span>
+        <img src="../img/logos/bystronic.svg" alt="Bystronic">
+        <img src="../img/logos/rocket.png" alt="Rocket Software">
+        <img src="../img/logos/bluecargo.svg" alt="BlueCargo">
+        <img src="../img/logos/paxiom.png" alt="Paxiom">
+        <img src="../img/logos/horn.svg" alt="Horn">
+        <img src="../img/logos/novahavens.png" alt="Nova Havens">
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<section class="close">
+  <canvas id="globe2" aria-hidden="true"></canvas>
+  <div class="wrap close-in">
+    <h2 class="rv">Wherever your next seller is, we already have the map.</h2>
+    <p class="rv">Thirty minutes with a specialist. Bring the seat you need to fill and leave with an honest market read, US, global, or a blend.</p>
+    <div class="close-row rv">
+      <a class="btn" href="https://calendly.com/virginia-bowers/initial-meeting">Book a call</a>
+      <small>Or call 1-855-6-SELLERS. Answered within 24 hours.</small>
+    </div>
+    <div class="close-list rv">
+      <div><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#30C8C8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>An honest read on your talent market</div>
+      <div><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#30C8C8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Realistic comp and timeline</div>
+      <div><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#30C8C8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>A clear recommendation, even if it is not us</div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-in">
+      <span class="brand"><img src="../img/sellershub-logo-white.png" alt="Sellers Hub logo">Sellers Hub</span>
+      <div class="foot-links">
+        <a href="#">US Sales Recruitment</a>
+        <a href="#">Global Talent</a>
+        <a href="#">Success Stories</a>
+        <a href="#">Blog</a>
+        <a href="#">For Job Seekers</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+    <div class="foot-legal">© 2026 SELLERS HUB · PRIVACY POLICY · 1-855-6-SELLERS</div>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* reveals */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+}), { threshold: .15 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+/* journey count-ups */
+const jio = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return; jio.unobserve(e.target);
+  const b = e.target, n = +b.dataset.n;
+  if (REDUCE) { b.textContent = n; return; }
+  const t0 = performance.now(), D = 1300;
+  (function tick(t) {
+    const p = Math.min((t - t0) / D, 1), ea = 1 - Math.pow(1 - p, 3);
+    b.textContent = Math.round(n * ea);
+    if (p < 1) requestAnimationFrame(tick);
+  })(t0);
+}), { threshold: .6 });
+document.querySelectorAll('.jnum').forEach(el => jio.observe(el));
+
+/* savings meter */
+const mio = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return; mio.unobserve(e.target);
+  e.target.querySelectorAll('.fill').forEach(f => { f.style.width = f.dataset.w; });
+}), { threshold: .5 });
+mio.observe(document.getElementById('meter'));
+
+/* mode switching: hero buttons + tabs stay in sync and drive the globe */
+let MODE = 'us';
+const setMode = m => {
+  MODE = m;
+  document.querySelectorAll('.mode').forEach(b => {
+    const on = b.dataset.mode === m;
+    b.classList.toggle('active', on); b.setAttribute('aria-pressed', on);
+  });
+  document.getElementById('tab-us').classList.toggle('active', m === 'us');
+  document.getElementById('tab-global').classList.toggle('active', m === 'global');
+  document.getElementById('tab-us').setAttribute('aria-selected', m === 'us');
+  document.getElementById('tab-global').setAttribute('aria-selected', m === 'global');
+  document.getElementById('panel-us').classList.toggle('show', m === 'us');
+  document.getElementById('panel-global').classList.toggle('show', m === 'global');
+  document.getElementById('coord').textContent = m === 'us'
+    ? '27.9506 N, 82.4572 W / SELLERS HUB HQ'
+    : 'GLOBAL SOURCING GRID / 3 CONTINENTS LIVE';
+};
+document.querySelectorAll('.mode').forEach(b => b.addEventListener('click', () => setMode(b.dataset.mode)));
+document.getElementById('tab-us').addEventListener('click', () => setMode('us'));
+document.getElementById('tab-global').addEventListener('click', () => setMode('global'));
+
+/* ==========================================================
+   THE GLOBE: hand-rolled 3D point-cloud earth.
+   Land mask from coarse continent polygons, projected to a
+   sphere. Camera swings per mode, arcs stream global talent
+   toward HQ. Preallocated, DPR<=2, paused offscreen, static
+   under reduced motion.
+   ========================================================== */
+(function () {
+  const DEVMODE = new URLSearchParams(location.search);
+  const cv = document.getElementById('globe');
+  const cv2 = document.getElementById('globe2');
+  if (!cv) return;
+
+  /* coarse continents as lon/lat polygons (hand-drawn, dot-resolution) */
+  const POLY = [
+    /* North America */
+    [[-168,66],[-152,70],[-130,70],[-110,72],[-90,73],[-75,72],[-66,60],[-55,50],[-60,46],[-70,43],[-74,40],[-76,35],[-81,30],[-80,25],[-86,30],[-91,29],[-96,27],[-97,21],[-102,17],[-106,22],[-111,26],[-117,33],[-124,40],[-125,48],[-132,55],[-148,61],[-160,59],[-168,66]],
+    /* South America */
+    [[-78,7],[-71,11],[-61,9],[-52,4],[-44,-2],[-35,-7],[-38,-15],[-45,-23],[-53,-30],[-60,-35],[-65,-41],[-70,-47],[-72,-54],[-67,-55],[-69,-44],[-72,-33],[-70,-20],[-76,-12],[-80,-4],[-78,7]],
+    /* Europe mainland */
+    [[-9,37],[-9,43],[-2,44],[0,47],[6,49],[9,54],[14,54],[22,54],[30,52],[38,50],[44,46],[40,42],[30,40],[23,37],[16,38],[8,42],[0,38],[-9,37]],
+    /* Scandinavia + Baltics */
+    [[5,58],[8,63],[14,68],[24,71],[31,70],[29,63],[23,59],[15,55],[8,56],[5,58]],
+    /* UK + Ireland */
+    [[-6,50],[-8,54],[-6,58],[-2,57],[0,52],[-3,50],[-6,50]],
+    /* Africa */
+    [[-17,15],[-17,21],[-7,35],[10,37],[20,32],[32,31],[35,27],[34,20],[43,11],[51,12],[45,-2],[40,-11],[35,-20],[31,-28],[25,-34],[19,-34],[14,-26],[12,-16],[9,-1],[5,5],[-8,5],[-13,9],[-17,15]],
+    /* Asia (big coarse mass) */
+    [[30,70],[55,73],[85,76],[110,74],[135,72],[160,70],[178,66],[170,62],[160,60],[157,53],[142,52],[135,44],[128,40],[122,38],[121,30],[117,23],[108,17],[105,9],[103,1],[98,7],[97,16],[91,21],[86,20],[80,13],[76,8],[72,20],[66,24],[57,25],[50,29],[44,38],[36,43],[30,52],[30,70]],
+    /* Japan */
+    [[129,31],[131,34],[136,35],[140,37],[141,41],[144,44],[141,45],[138,38],[133,34],[129,32],[129,31]],
+    /* Borneo + Indonesia hint */
+    [[100,0],[104,-4],[110,-7],[116,-8],[119,-4],[117,1],[112,3],[106,3],[100,0]],
+    /* Philippines hint */
+    [[120,18],[123,13],[126,8],[123,6],[120,11],[120,18]],
+    /* Australia */
+    [[114,-22],[115,-33],[119,-35],[129,-32],[136,-35],[140,-38],[147,-39],[151,-34],[153,-28],[151,-23],[146,-19],[142,-12],[135,-12],[130,-12],[124,-15],[117,-20],[114,-22]],
+    /* Greenland */
+    [[-45,60],[-53,65],[-56,70],[-52,75],[-42,79],[-30,81],[-21,76],[-24,70],[-33,65],[-45,60]],
+    /* New Zealand hint */
+    [[167,-45],[170,-44],[174,-40],[176,-38],[173,-41],[169,-46],[167,-45]]
+  ];
+  function inland(lon, lat) {
+    for (const poly of POLY) {
+      let ok = false;
+      for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+        const xi = poly[i][0], yi = poly[i][1], xj = poly[j][0], yj = poly[j][1];
+        if (((yi > lat) !== (yj > lat)) && (lon < (xj - xi) * (lat - yi) / (yj - yi) + xi)) ok = !ok;
+      }
+      if (ok) return true;
+    }
+    return false;
+  }
+
+  const MOBILE = matchMedia('(max-width: 720px)').matches;
+  const STEP = MOBILE ? 4.6 : 3.1;
+  const D2R = Math.PI / 180;
+  const pts = []; /* unit sphere vectors + region tag */
+  function ll2v(lon, lat) {
+    const la = lat * D2R, lo = lon * D2R;
+    return [Math.cos(la) * Math.sin(lo), Math.sin(la), Math.cos(la) * Math.cos(lo)];
+  }
+  for (let lat = -56; lat <= 74; lat += STEP) {
+    const adj = STEP / Math.max(Math.cos(lat * D2R), .3);
+    for (let lon = -180; lon < 180; lon += adj) {
+      if (!inland(lon, lat)) continue;
+      const us = lon > -125 && lon < -66 && lat > 24 && lat < 50;
+      const latam = (lon > -118 && lon < -34 && lat > -56 && lat < 24);
+      const eu = (lon > -10 && lon < 45 && lat > 35 && lat < 72);
+      const asia = (lon > 60 && lon < 145 && lat > -12 && lat < 40);
+      pts.push({ v: ll2v(lon, lat), us, gl: latam || eu || asia });
+    }
+  }
+
+  /* cities */
+  const HQ = ll2v(-82.5, 28);
+  const METROS = [ll2v(-74, 40.7), ll2v(-87.6, 41.9), ll2v(-96.8, 32.8)];
+  const SOURCES = [ll2v(-99.1, 19.4), ll2v(-74.1, 4.7), ll2v(-58.4, -34.6),
+                   ll2v(-9.1, 38.7), ll2v(-0.1, 51.5), ll2v(21, 52.2),
+                   ll2v(121, 14.6), ll2v(77.6, 13), ll2v(106.7, 10.8)];
+  /* arc paths: slerp source -> HQ with lift */
+  function slerp(a, b, t) {
+    let d = a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
+    d = Math.min(Math.max(d, -1), 1);
+    const th = Math.acos(d), s = Math.sin(th);
+    if (s < 1e-4) return a.slice();
+    const A = Math.sin((1-t)*th)/s, B = Math.sin(t*th)/s;
+    return [a[0]*A+b[0]*B, a[1]*A+b[1]*B, a[2]*A+b[2]*B];
+  }
+  const ARCS = SOURCES.map(src => {
+    const path = [];
+    for (let k = 0; k <= 36; k++) {
+      const t = k / 36, p = slerp(src, HQ, t), lift = 1 + .16 * Math.sin(Math.PI * t);
+      path.push([p[0]*lift, p[1]*lift, p[2]*lift]);
+    }
+    return path;
+  });
+
+  /* glow sprite */
+  function sprite(color, r) {
+    const c = document.createElement('canvas'); c.width = c.height = r*2;
+    const g = c.getContext('2d');
+    const gr = g.createRadialGradient(r,r,0,r,r,r);
+    gr.addColorStop(0,color); gr.addColorStop(.4,color.replace('1)','.4)')); gr.addColorStop(1,'rgba(0,0,0,0)');
+    g.fillStyle = gr; g.fillRect(0,0,r*2,r*2);
+    return c;
+  }
+  const SP = sprite('rgba(48,200,200,1)', 22);
+
+  function engine(canvas, opts) {
+    const ctx = canvas.getContext('2d');
+    let W=0,H=0,DPR=1,R=0,CX=0,CY=0;
+    function resize(){
+      DPR=Math.min(devicePixelRatio||1,2);
+      const b=canvas.parentElement.getBoundingClientRect();
+      W=b.width;H=b.height;
+      canvas.width=W*DPR;canvas.height=H*DPR;
+      ctx.setTransform(DPR,0,0,DPR,0,0);
+      R=Math.min(W,H)*(opts.scale||.42);CX=W*(opts.cx||.5);CY=H*(opts.cy||.52);
+    }
+    addEventListener('resize',resize);resize();
+
+    /* camera: rotY targets. us: center Americas (lon -90 => rotY 90deg), global: mid-Atlantic pullback */
+    let rotY = 1.6, rotX = .18, zoom = 1, tRotY = 1.6, tRotX = .18, tZoom = 1.18;
+    let spin = 0;
+    let ripple = null;
+
+    canvas.parentElement.addEventListener('pointerdown', e => {
+      const b = canvas.getBoundingClientRect();
+      ripple = { x: e.clientX - b.left, y: e.clientY - b.top, r: 0 };
+    });
+
+    function proj(v, out) {
+      /* rotY then rotX */
+      const cy = Math.cos(rotY + spin), sy = Math.sin(rotY + spin);
+      const cx = Math.cos(rotX), sx = Math.sin(rotX);
+      let x = v[0]*cy + v[2]*sy;
+      let z = -v[0]*sy + v[2]*cy;
+      let y = v[1]*cx - z*sx;
+      z = v[1]*sx + z*cx;
+      out[0] = CX + x*R*zoom; out[1] = CY - y*R*zoom; out[2] = z;
+      return out;
+    }
+    const o = [0,0,0], o2 = [0,0,0];
+
+    let running = true, visible = true;
+    if (!DEVMODE.has('still')) {
+      new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(canvas);
+      document.addEventListener('visibilitychange', () => { running = !document.hidden; });
+    }
+
+    function setMode(m) {
+      if (m === 'us') { tRotY = (82.5+8) * D2R + .35; tRotX = .38; tZoom = 1.5; }
+      else { tRotY = (40) * D2R + .8; tRotX = .22; tZoom = 1.02; }
+    }
+    setMode('us');
+
+    function frame(now) {
+      requestAnimationFrame(frame);
+      if (!running || !visible) return;
+      ctx.clearRect(0,0,W,H);
+      rotY += (tRotY - rotY) * .045;
+      rotX += (tRotX - rotX) * .045;
+      zoom += (tZoom - zoom) * .045;
+      spin += .0009;
+
+      /* atmosphere rim */
+      const rim = ctx.createRadialGradient(CX,CY,R*zoom*.82,CX,CY,R*zoom*1.22);
+      rim.addColorStop(0,'rgba(48,200,200,0)');
+      rim.addColorStop(.62,'rgba(48,200,200,.05)');
+      rim.addColorStop(.8,'rgba(48,200,200,.13)');
+      rim.addColorStop(1,'rgba(48,200,200,0)');
+      ctx.fillStyle=rim;
+      ctx.beginPath();ctx.arc(CX,CY,R*zoom*1.24,0,7);ctx.fill();
+      /* dark sphere body */
+      const body = ctx.createRadialGradient(CX-R*zoom*.3,CY-R*zoom*.35,R*zoom*.1,CX,CY,R*zoom);
+      body.addColorStop(0,'rgba(30,44,96,.85)');
+      body.addColorStop(1,'rgba(11,17,41,.92)');
+      ctx.fillStyle=body;
+      ctx.beginPath();ctx.arc(CX,CY,R*zoom,0,7);ctx.fill();
+
+      /* land dots */
+      const usMode = opts.mode() === 'us';
+      for (let i=0;i<pts.length;i++){
+        const P=pts[i];proj(P.v,o);
+        if (o[2] < .06) continue;                    /* back hemisphere hidden */
+        const lit = usMode ? P.us : P.gl;
+        const depth = o[2];
+        if (lit) {
+          const tw = .75 + .25*Math.sin(now*.002 + i);
+          ctx.globalAlpha = Math.min(depth+.15,1) * tw;
+          const s = 7.5 + depth*4;
+          ctx.drawImage(SP, o[0]-s/2, o[1]-s/2, s, s);
+        } else {
+          ctx.globalAlpha = .38*depth+.08;
+          ctx.fillStyle = '#8FA2CE';
+          ctx.fillRect(o[0]-.9, o[1]-.9, 1.8, 1.8);
+        }
+      }
+      ctx.globalAlpha = 1;
+
+      /* metro pulses (US) or streaming arcs (global) */
+      if (usMode) {
+        for (let m=0;m<METROS.length;m++){
+          proj(METROS[m],o);
+          if (o[2] < .06) continue;
+          const ph = ((now*.0011)+m*.33)%1;
+          ctx.strokeStyle = 'rgba(48,200,200,'+(.55*(1-ph)).toFixed(3)+')';
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();ctx.arc(o[0],o[1],4+ph*26*zoom,0,7);ctx.stroke();
+          ctx.drawImage(SP,o[0]-9,o[1]-9,18,18);
+        }
+        proj(HQ,o);
+        if (o[2] > .06){ ctx.drawImage(SP,o[0]-13,o[1]-13,26,26); }
+      } else {
+        ctx.lineWidth = 1.4;
+        for (let a=0;a<ARCS.length;a++){
+          const path=ARCS[a];
+          /* faint full arc */
+          ctx.strokeStyle='rgba(48,200,200,.14)';
+          ctx.beginPath();let started=false;
+          for (let k=0;k<path.length;k++){
+            proj(path[k],o);
+            if (o[2] < -.05){started=false;continue;}
+            if(!started){ctx.moveTo(o[0],o[1]);started=true;}else ctx.lineTo(o[0],o[1]);
+          }
+          ctx.stroke();
+          /* streaming head */
+          const ph=((now*.00016)+a*.111)%1;
+          const hi=Math.floor(ph*(path.length-1));
+          for (let k=Math.max(hi-5,0);k<=hi;k++){
+            proj(path[k],o);
+            if (o[2] < -.05) continue;
+            const fade=(k-(hi-5))/5;
+            ctx.globalAlpha=fade;
+            const s=4+fade*8;
+            ctx.drawImage(SP,o[0]-s/2,o[1]-s/2,s,s);
+          }
+          ctx.globalAlpha=1;
+          /* source city marker */
+          proj(path[0],o);
+          if (o[2] > .06) ctx.drawImage(SP,o[0]-7,o[1]-7,14,14);
+        }
+        proj(HQ,o);
+        if (o[2] > .06){
+          const ph=(now*.0012)%1;
+          ctx.strokeStyle='rgba(48,200,200,'+(.6*(1-ph)).toFixed(3)+')';
+          ctx.lineWidth=1.6;
+          ctx.beginPath();ctx.arc(o[0],o[1],5+ph*30,0,7);ctx.stroke();
+          ctx.drawImage(SP,o[0]-14,o[1]-14,28,28);
+        }
+      }
+
+      /* sonar ripple from pointer */
+      if (ripple){
+        ripple.r += 2.6;
+        const a = 1 - ripple.r/130;
+        if (a<=0) ripple=null;
+        else{
+          ctx.strokeStyle='rgba(48,200,200,'+(a*.5).toFixed(3)+')';
+          ctx.lineWidth=1.4;
+          ctx.beginPath();ctx.arc(ripple.x,ripple.y,ripple.r,0,7);ctx.stroke();
+        }
+      }
+    }
+
+    if (REDUCE) {
+      /* one static, both-lit frame */
+      rotY = 1.2; rotX = .25; zoom = 1.1; spin = 0;
+      ctx.clearRect(0,0,W,H);
+      const save = opts.mode; opts.mode = () => 'us';
+      /* draw sphere + us dots once */
+      const body = ctx.createRadialGradient(CX-R*.3,CY-R*.35,R*.1,CX,CY,R);
+      body.addColorStop(0,'rgba(30,44,96,.85)');body.addColorStop(1,'rgba(11,17,41,.92)');
+      ctx.fillStyle=body;ctx.beginPath();ctx.arc(CX,CY,R,0,7);ctx.fill();
+      for (let i=0;i<pts.length;i++){
+        proj(pts[i].v,o);if(o[2]<.06)continue;
+        ctx.globalAlpha=(pts[i].us||pts[i].gl)?.8:.3;
+        if(pts[i].us||pts[i].gl){const s=6+o[2]*4;ctx.drawImage(SP,o[0]-s/2,o[1]-s/2,s,s);}
+        else{ctx.fillStyle='#8FA2CE';ctx.fillRect(o[0]-1,o[1]-1,2,2);}
+      }
+      ctx.globalAlpha=1;
+      opts.mode = save;
+      return { setMode: () => {} };
+    }
+    requestAnimationFrame(frame);
+    return { setMode };
+  }
+
+  const heroGlobe = engine(cv, { mode: () => MODE, scale: .5, cx: .68, cy: .55 });
+  const closeGlobe = cv2 ? engine(cv2, { mode: () => 'global', scale: .55, cx: .78, cy: .5 }) : null;
+
+  /* dev hook: ?mode=global forces mode */
+  if (DEVMODE.get('mode')) setMode(DEVMODE.get('mode'));
+
+  /* re-aim hero camera on mode change */
+  const origSetMode = setMode;
+  window.setMode = m => { origSetMode(m); heroGlobe.setMode(m); };
+  document.querySelectorAll('.mode').forEach(b => b.addEventListener('click', () => heroGlobe.setMode(b.dataset.mode)));
+  document.getElementById('tab-us').addEventListener('click', () => heroGlobe.setMode('us'));
+  document.getElementById('tab-global').addEventListener('click', () => heroGlobe.setMode('global'));
+  heroGlobe.setMode(DEVMODE.get('mode') || 'us');
+})();
+</script>
+</body>
+</html>
